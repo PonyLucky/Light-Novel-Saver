@@ -1,0 +1,49 @@
+
+
+h1 {
+	text-align: center;
+	font-size: 18pt;
+}
+
+p {
+	text-align: left;
+	font-size: 12pt;
+}
+
+main {
+	text-align: center;
+}
+
+a:link:not(.btn), a:visited:not(.btn) {
+  color: #ee6e73;;
+}
+
+a:hover:not(.btn), a:active:not(.btn) {
+  color: rgb(255 102 110);
+}
+
+#ln_content {
+	display: none;
+}
+
+.header {
+	color: #ee6e73;
+}
+
+.ln_info {
+    width: 100%;
+}
+
+.ln_info > i {
+    margin: 40px 0;
+    color: #ee6e73;
+    font-size: 7rem;
+    display: block;
+}
+
+.ln_info-caption {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
