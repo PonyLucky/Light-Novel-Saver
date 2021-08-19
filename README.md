@@ -19,6 +19,7 @@ HTML, JS and CSS languages are interpreted so you don't need to compile anything
 Currently websites supported:
 * www.lightnovelstranslations.com
 * www.lightnovelworld.com
+* www.novelpub.com
 
 ## Informations
 If you see a supported website not working, please notify us with the **Issues** Pannel, add the **URL** so we can fix it.

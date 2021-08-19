@@ -14,6 +14,12 @@ var ln_lst = {
 		},
 		"Insert the first chapter of the Light Novel"
 	],
+	"www.novelpub.com": [
+		function() {
+			ln_type_www_novelpub_com();
+		},
+		"Insert the first chapter of the Light Novel"
+	],
 	"none": [
 		function() {
 			M.toast({html: "Select a website"});
@@ -34,11 +40,10 @@ function ln_load() {
 
 	// If the selected domain is present in the URL
 	if (document.getElementById('ln_url').value.includes(type_ln)) {
-
 		// Just a check if I forgot to update 'ln_lst'
 		if (ln_lst[type_ln]) {
 			// And then load the novel with the allocated function
-			ln_lst[type_ln][0];
+			ln_lst[type_ln][0]();
 		}
 		else {
 			console.error("ln_load() -> ln_lst[\""+type_ln+"\"]: invalid value");
