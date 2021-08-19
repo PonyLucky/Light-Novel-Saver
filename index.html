@@ -30,13 +30,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- jQuery -->
-	<link rel="stylesheet" type="text/css" href="local/css/style.css">
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="local/css/style.css"
+	>
 
 	<!-- Materialize -->
-	<link rel="stylesheet" type="text/css" href="vendors/materialize/css/materialize.min.css">
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="vendors/materialize/css/materialize.min.css"
+	>
 
 	<!-- Material -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	>
 </head>
 <body>
 	<main class="container">
@@ -54,7 +65,12 @@
 					<i class="material-icons">settings</i>
 					<p class="ln_info-caption center">Requirements</p>
 					<p class="light center">
-						Install this <a target="_blank" href="https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US">extension</a> to be able to load content from other websites.
+						Install this
+						<a
+							target="_blank"
+							href="https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US"
+						>extension</a>
+						to be able to load content from other websites.
 						(<i>And turn it '<b>ON</b>'</i>)
 					</p>
 				</div>
@@ -64,10 +80,16 @@
 					<i class="material-icons">comment</i>
 					<p class="ln_info-caption center">Informations</p>
 					<p class="light center">
-						The current version of this 'converter' gives as its output a .HTML file prepared for importation into any EPUB/PDF converter.
+						The current version of this 'converter' gives as its output a .HTML 
+						file prepared for importation into any EPUB/PDF converter.
 					</p>
 					<p class="light center">
-						Like this <a target="_blank" href="https://www.onlineconverter.com/html-to-epub">one</a>, <i>(he rightly add the metadata: <b>title</b> ; <b>author</b>)</i>
+						Like this
+						<a
+							target="_blank"
+							href="https://www.onlineconverter.com/html-to-epub"
+						>one</a>,
+						<i>(he rightly add the metadata: <b>title</b> ; <b>author</b>)</i>
 					</p>
 				</div>
 			</div>
@@ -79,7 +101,8 @@
 						Press <b>F12</b> to know what you're doing.
 					</p>
 					<p class="light center">
-						Because it will freeze until it's finished <i>(This point is in process to be fixed)</i>
+						Because it will freeze until it's finished
+						<i>(This point is in process to be fixed)</i>
 					</p>
 				</div>
 			</div>
@@ -89,21 +112,41 @@
 			<div class="input-field col s6">
 				<select id="ln_type" class="validate" onchange="ln_type();">
 					<option value="" disabled selected>Choose</option>
-					<option value="www.lightnovelstranslations.com">www.lightnovelstranslations.com</option>
-					<option value="www.lightnovelworld.com">www.lightnovelworld.com</option>
+					<option value="www.lightnovelstranslations.com"
+						>www.lightnovelstranslations.com</option>
+					<option value="www.lightnovelworld.com"
+						>www.lightnovelworld.com</option>
 				</select>
 			</div>
 			<div class="input-field col s6">
-				<input class="validate" type="text" id="ln_url" placeholder="">
-	        </div>
-	        <div class="input-field col s12">
-				<input class="validate" type="text" id="ln_author" placeholder="Author name...">
-	        </div>
-	        <div class="input-field col s12"><a class="waves-effect waves-light btn" onclick="ln_load();">Load</a></div>
-	        <div id="ln_download" class="input-field col s12"></div>
+				<input
+					class="validate"
+					type="text"
+					id="ln_url"
+					placeholder="First choose a domain"
+				>
+			</div>
+			<div class="input-field col s12">
+				<input
+					class="validate"
+					type="text"
+					id="ln_author"
+					placeholder="Author..."
+				>
+			</div>
+			<div class="input-field col s12">
+				<a class="waves-effect waves-light btn" onclick="ln_load();">
+					Load
+				</a>
+			</div>
+			<div id="ln_download" class="input-field col s12"></div>
 		</section>
 		<section class="row">
-			<div class="right">Use of <a href="https://jquery.com/">jQuery</a>, <a href="https://materializecss.com/">Materialize</a> and <a href="https://material-ui.com/">Material</a></div>
+			<div class="right">
+				Use of <a href="https://jquery.com/">jQuery</a>,
+				<a href="https://materializecss.com/">Materialize</a>
+				and <a href="https://material-ui.com/">Material</a>
+			</div>
 		</section>
 	</main>
 
