@@ -6,6 +6,10 @@ Save in a HTML file all chapters of your preferred Light Novel directly from its
 
 The output file can't be simplier in its architecture so it will be converted nicely in any format (EPUB, PDF, etc)) with metadata if you go on the advised converter on the page.
 
+## Requirements
+Install this [extension](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US)
+to be able to load content from other websites. (_And turn it '**ON**'_).
+
 ## How to use
 HTML, JS and CSS languages are interpreted so you don't need to compile anything:
 1. Make sure to download the whole project;
