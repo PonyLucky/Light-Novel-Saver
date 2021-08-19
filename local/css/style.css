@@ -28,6 +28,10 @@ a:hover:not(.btn), a:active:not(.btn) {
   color: #ee6e73;
 }
 
+.col-div {
+  width: 33.3333333333% !important;
+}
+
 .ln_info, .ln_form {
   width: 100%;
 }
@@ -56,4 +60,11 @@ a:hover:not(.btn), a:active:not(.btn) {
   font-weight: 500;
   margin-top: 5px;
   margin-bottom: 0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1015px) {
+  .col-div {
+    width: 100% !important;
+  }
 }
