@@ -128,11 +128,15 @@
 					<span>1</span>
 					<div class="input-field col s12">
 						<select id="ln_type" class="validate" onchange="ln_type();">
-							<option value="" disabled selected>Choose</option>
-							<option value="www.lightnovelstranslations.com"
-								>www.lightnovelstranslations.com</option>
-							<option value="www.lightnovelworld.com"
-								>www.lightnovelworld.com</option>
+							<option value="none" disabled selected>
+								Choose a website
+							</option>
+							<option value="www.lightnovelstranslations.com">
+								www.lightnovelstranslations.com
+							</option>
+							<option value="www.lightnovelworld.com">
+								www.lightnovelworld.com
+							</option>
 						</select>
 					</div>
 				</div>
@@ -144,26 +148,32 @@
 					<span>2</span>
 					<div class="input-field col s12">
 						<input
-							class="validate"
 							type="text"
 							id="ln_url"
-							placeholder="First choose a domain"
-							required
+							class="validate"
+							placeholder="First choose a website"
+							title="First choose a website"
+							required="required"
+							autocomplete="off"
 						>
 					</div>
 				</div>
 			</div>
 
 			<!-- Input to insert the author -->
+			<!-- 'name' for the autocomplete -->
 			<div class="col s12 col-div">
 				<div class="center ln_form">
 					<span>3</span>
 					<div class="input-field col s12">
 						<input
-							class="validate"
 							type="text"
 							id="ln_author"
+							name="author"
+							class="validate"
 							placeholder="(optionnal) Author..."
+							title="(optionnal) Author..."
+							autocomplete="on"
 						>
 					</div>
 				</div>

@@ -1,6 +1,27 @@
 // Global variables
 var ln_title="", ln_content="";
 
+var ln_lst = {
+	"www.lightnovelstranslations.com": [
+		function() {
+			ln_type_www_lightnovelstranslations_com();
+		},
+		"Insert the root page of the Light Novel"
+	],
+	"www.lightnovelworld.com": [
+		function() {
+			ln_type_www_lightnovelworld_com();
+		},
+		"Insert the first chapter of the Light Novel"
+	],
+	"none": [
+		function() {
+			M.toast({html: "Select a website"});
+		},
+		"First choose a website"
+	]
+};
+
 // The enable the select
 // Necessary because of Materialize
 $(document).ready(function(){
@@ -9,43 +30,43 @@ $(document).ready(function(){
 
 // When cliking on the button 'LOAD'
 function ln_load() {
-	let elmt = document.getElementById('ln_type').value;
+	let type_ln = document.getElementById('ln_type').value;
 
 	// If the selected domain is present in the URL
-	if (document.getElementById('ln_url').value.includes(elmt)) {
-		// And then load the novel with the allocated function
-		switch (elmt) {
-			case "www.lightnovelstranslations.com":
-				ln_type_www_lightnovelstranslations_com();
-				break;
-			case "www.lightnovelworld.com":
-				ln_type_www_lightnovelworld_com();
-				break;
-			default:
-				M.toast({html: "Select a domain"});
+	if (document.getElementById('ln_url').value.includes(type_ln)) {
+
+		// Just a check if I forgot to update 'ln_lst'
+		if (ln_lst[type_ln]) {
+			// And then load the novel with the allocated function
+			ln_lst[type_ln][0];
+		}
+		else {
+			console.error("ln_load() -> ln_lst[\""+type_ln+"\"]: invalid value");
+			M.toast({
+				html: "<i class='material-icons'>info</i>"
+					+" This website isn't fully implemented yet",
+				classes: "red"
+			});
 		}
 	}
 	else {
 		if (document.getElementById('ln_url').value == "") M.toast({html: "Insert an URL"});
-		else M.toast({html: "Insert an URL with the right domain<br>(www.'domain'.com)"});
+		else M.toast({html: "Insert a page of the chosen website"});
 	}
 }
 
 // Triggered by the event 'onchange' of the select
 // Used to change the placeholder of #ln_url
 function ln_type() {
-	let elmt = document.getElementById('ln_type').value;
+	let type_ln = document.getElementById('ln_type').value;
 
-	switch (elmt) {
-		case "www.lightnovelstranslations.com":
-			document.getElementById('ln_url').placeholder = "Insert the root page of the Light Novel";
-			break;
-		case "www.lightnovelworld.com":
-			document.getElementById('ln_url').placeholder = "Insert the first chapter of the Light Novel";
-			break;
-		default:
-			document.getElementById('ln_url').placeholder = "";
+	// Just a check if I forgot to update 'ln_lst'
+	if (ln_lst[type_ln]) {
+		// Set the placehorder and the title in function of the website
+		document.getElementById('ln_url').placeholder = ln_lst[type_ln][1];
+		document.getElementById('ln_url').setAttribute('title', ln_lst[type_ln][1]);
 	}
+	else  console.error("ln_type() -> ln_lst[\""+type_ln+"\"]: invalid value");
 }
 
 function display_save_button() {
