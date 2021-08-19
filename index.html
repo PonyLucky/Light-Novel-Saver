@@ -51,6 +51,7 @@
 </head>
 <body>
 	<main class="container">
+		<!-- Headers -->
 		<section class="row center">
 			<div class="col s12 m10 offset-m1">
 				<h1 class="header">Light Novel Saver</h1>
@@ -59,6 +60,8 @@
 				<h4 class="light">By MARGOT Louis</h4>
 			</div>
 		</section>
+
+		<!-- Infos -->
 		<section class="row">
 			<div class="col s12 m4">
 				<div class="center ln_info">
@@ -80,7 +83,7 @@
 					<i class="material-icons">comment</i>
 					<p class="ln_info-caption center">Informations</p>
 					<p class="light center">
-						The current version of this 'converter' gives as its output a .HTML 
+						The current version of this 'saver' gives as its output a .HTML 
 						file prepared for importation into any EPUB/PDF converter.
 					</p>
 					<p class="light center">
@@ -107,33 +110,50 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- Form -->
 		<section class="row">
 			<!-- A choice of the website and an input to write the URL -->
-			<div class="input-field col s6">
-				<select id="ln_type" class="validate" onchange="ln_type();">
-					<option value="" disabled selected>Choose</option>
-					<option value="www.lightnovelstranslations.com"
-						>www.lightnovelstranslations.com</option>
-					<option value="www.lightnovelworld.com"
-						>www.lightnovelworld.com</option>
-				</select>
+			<div class="col s12 m4">
+				<div class="center ln_form">
+					<span>1</span>
+					<div class="input-field col s12">
+						<select id="ln_type" class="validate" onchange="ln_type();">
+							<option value="" disabled selected>Choose</option>
+							<option value="www.lightnovelstranslations.com"
+								>www.lightnovelstranslations.com</option>
+							<option value="www.lightnovelworld.com"
+								>www.lightnovelworld.com</option>
+						</select>
+					</div>
+				</div>
 			</div>
-			<div class="input-field col s6">
-				<input
-					class="validate"
-					type="text"
-					id="ln_url"
-					placeholder="First choose a domain"
-					required
-				>
+			<div class="col s12 m4">
+				<div class="center ln_form">
+					<span>2</span>
+					<div class="input-field col s12">
+						<input
+							class="validate"
+							type="text"
+							id="ln_url"
+							placeholder="First choose a domain"
+							required
+						>
+					</div>
+				</div>
 			</div>
-			<div class="input-field col s12">
-				<input
-					class="validate"
-					type="text"
-					id="ln_author"
-					placeholder="(optionnal) Author..."
-				>
+			<div class="col s12 m4">
+				<div class="center ln_form">
+					<span>3</span>
+					<div class="input-field col s12">
+						<input
+							class="validate"
+							type="text"
+							id="ln_author"
+							placeholder="(optionnal) Author..."
+						>
+					</div>
+				</div>
 			</div>
 			<div class="input-field col s12">
 				<a class="waves-effect waves-light btn" onclick="ln_load();">
