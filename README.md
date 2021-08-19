@@ -10,6 +10,7 @@ Currently websites supported:
 
 ## Informations
 If you see a supported website not working, please notify us with the **Issues** Pannel, add the **URL** so we can fix it.
+
 Same, if you want us to implement a new website. Just say the word.
 
 ## More importantly
