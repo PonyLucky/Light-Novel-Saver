@@ -26,5 +26,8 @@ If you see a supported website not working, please notify us with the **Issues**
 
 Same, if you want us to implement a new website. Just say the word.
 
+## Disclaimer
+You are only allowed to use the content of this project when the light novel you want to download can't be bought in your country.
+
 ## More importantly
 Enjoy your book ;)

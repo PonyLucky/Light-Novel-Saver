@@ -18,6 +18,7 @@ a:link:not(.btn), a:visited:not(.btn) {
 
 a:hover:not(.btn), a:active:not(.btn) {
   color: rgb(255 102 110);
+  text-decoration: underline;
 }
 
 #ln_content {
@@ -28,11 +29,15 @@ a:hover:not(.btn), a:active:not(.btn) {
   color: #ee6e73;
 }
 
-.col-div {
+.col-div-3 {
   width: 33.3333333333% !important;
 }
 
-.ln_info, .ln_form {
+.col-div-2 {
+  width: 50% !important;
+}
+
+.ln_info, .ln_form, .ln_copyrights {
   width: 100%;
 }
 
@@ -43,12 +48,13 @@ a:hover:not(.btn), a:active:not(.btn) {
   display: block;
 }
 
-.ln_form > span {
-  margin: 40px 0;
+.ln_form > span, .ln_copyrights > span{
+  margin: 40px auto;
   background-color: #ee6e73;
   color: white;
   font-size: 3rem;
-  display: inline-block;
+  font-weight: 600;
+  display: block;
   width: 2em;
   height: 2em;
   border-radius: 50%;
@@ -64,7 +70,7 @@ a:hover:not(.btn), a:active:not(.btn) {
 
 /* Responsive */
 @media only screen and (max-width: 1015px) {
-  .col-div {
+  .col-div-3, .col-div-2 {
     width: 100% !important;
   }
 }
