@@ -1,35 +1,22 @@
 // Global variables
 var ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 
-// [website][pos]
-//// pos = 0 -> function to launch
-//// pos = 1 -> placeholder/title in URL text input
+// ln_lst[website]
+// Dict to call the right function depending of the website
 const ln_lst = {
-	"lightnovelstranslations.com": [
-		function() {
-			ln_type_www_lightnovelstranslations_com();
-		},
-		"Insert the root page of the Light Novel"
-	],
-	"www.lightnovelworld.com": [
-		function() {
-			ln_type_www_lightnovelworld_com();
-		},
-		"Insert the first chapter of the Light Novel"
-	],
-	"www.novelpub.com": [
-		function() {
-			// The same so I won't write a second time
-			ln_type_www_lightnovelworld_com();
-		},
-		"Insert the first chapter of the Light Novel"
-	],
-	"none": [
-		function() {
-			M.toast({html: "Select a website"});
-		},
-		"URL of the Light Novel..."
-	]
+	"lightnovelstranslations.com": function() {
+		ln_type_www_lightnovelstranslations_com();
+	},
+	"www.lightnovelworld.com": function() {
+		ln_type_www_lightnovelworld_com();
+	},
+	"www.novelpub.com": function() {
+		// The same so I won't write a second time
+		ln_type_www_lightnovelworld_com();
+	},
+	"none": function() {
+		M.toast({html: "Select a website"});
+	}
 };
 
 // The enable the select
@@ -46,12 +33,15 @@ function ln_load() {
 	// Useful when reloading a novel right after another
 	reset_global_variables();
 
+	// Remove the save button if present
+	remove_element('ln_download');
+
 	// If the selected domain is present in the URL
 	if (document.getElementById('ln_url').value.includes(type_ln)) {
 		// Just a check if I forgot to update 'ln_lst'
 		if (ln_lst[type_ln]) {
 			// And then load the novel with the allocated function
-			ln_lst[type_ln][0]();
+			ln_lst[type_ln]();
 		}
 		else {
 			console.error("ln_load() -> ln_lst[\""+type_ln+"\"]: invalid value");
@@ -68,34 +58,21 @@ function ln_load() {
 	}
 }
 
-// Triggered by the event 'onchange' of the select
-// Used to change the placeholder of #ln_url
-function ln_type() {
-	let type_ln = document.getElementById('ln_type').value;
-
-	// Just a check if I forgot to update 'ln_lst'
-	if (ln_lst[type_ln]) {
-		// Set the placehorder and the title in function of the website
-		document.getElementById('ln_url').placeholder = ln_lst[type_ln][1];
-		document.getElementById('ln_url').setAttribute('title', ln_lst[type_ln][1]);
-		M.toast({html: ln_lst[type_ln][1]});
-	}
-	else  console.error("ln_type() -> ln_lst[\""+type_ln+"\"]: invalid value");
-}
-
+// Displays the save button to download the LN
 function display_save_button() {
-	// Clear what's inside first
-	if (document.getElementById('ln_download').hasChildNodes()) {
-		document.getElementById('ln_download')
-			.removeChild(document.getElementById('ln_download').firstChild);
-	}
+	let elmt = document.getElementById('ln_download');
+	// Remove the progressBar if present
+	remove_element('ln_progress_bar');
+
+	// Show the save button
+	elmt.classList.remove('d-none');
 
 	// Authorize the download now that the proccess is finished
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "Save the Light Novel";
 	btn.className = "waves-effect waves-light btn";
 	btn.setAttribute('onclick', 'ln_download();');
-	document.getElementById('ln_download').appendChild(btn);
+	elmt.appendChild(btn);
 }
 
 // To parse a formal String to an HTML document
@@ -103,6 +80,39 @@ function display_save_button() {
 function html_parser(str) {
 	let parser = new DOMParser();
 	return parser.parseFromString(str,"text/html");
+}
+
+// Displays the progressBar
+function display_progress_bar() {
+	let elmt = document.getElementById('ln_progress_bar');
+
+	// Show the progressBar
+	elmt.classList.remove('d-none');
+
+	// If the progressBar isn't here, create her
+	if (!elmt.hasChildNodes()) {
+		// Main progressBar
+		let progress_bar = document.createElement("DIV");
+		progress_bar.className = "progress";
+
+		// Sub-progressBar
+		let sub_progress_bar = document.createElement("DIV");
+		sub_progress_bar.className = "determinate";
+		sub_progress_bar.setAttribute(
+			'style', 'width: '
+			+((ln_nb_chapters_loaded / ln_nb_chapters)*100)
+			+'%'
+		);
+
+		// Append in the document
+		progress_bar.appendChild(sub_progress_bar);
+		elmt.appendChild(progress_bar);
+	}
+	else document.querySelector('div.determinate').setAttribute(
+		'style', 'width: '
+		+((ln_nb_chapters_loaded / ln_nb_chapters)*100)
+		+'%'
+	);
 }
 
 // Prepare the file to download
@@ -114,13 +124,13 @@ function ln_download() {
 	// Format the file
 	ln_data =
 	"<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>"
-		+(ln_title  != "" ? "\n<title>"+ln_title+"</title>"                  : "")
+		+(ln_title  != "" ? "\n<title>"+ln_title.trim()+"</title>"                  : "")
 		+(ln_author != "" ? "\n<meta name='author' content='"+ln_author+"'>" : "")
 		+"\n</head>\n<body>\n"
 		+ln_content
 		+"\n</body>\n</html>";
 	ln_download_triger = document.createElement("a");
-	ln_download_triger.download = ln_title+".html";
+	ln_download_triger.download = ln_title.trim()+".html";
 
 	ln_file = new Blob([ln_data], {
 	type: "text/plain"
@@ -134,4 +144,16 @@ function reset_global_variables() {
 	ln_content="";
 	ln_nb_chapters=0;
 	ln_nb_chapters_loaded=1;
+}
+
+// Remove the element is present
+function remove_element(id) {
+	let elmt = document.getElementById(id);
+
+	// Hide the element
+	elmt.classList.add('d-none');
+
+	if (elmt.hasChildNodes()) {
+		elmt.firstChild.remove();
+	}
 }

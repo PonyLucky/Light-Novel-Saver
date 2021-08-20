@@ -68,6 +68,10 @@ a:hover:not(.btn), a:active:not(.btn) {
   margin-bottom: 0;
 }
 
+.d-none {
+  display: none;
+}
+
 /* Responsive */
 @media only screen and (max-width: 1015px) {
   .col-div-3, .col-div-2 {

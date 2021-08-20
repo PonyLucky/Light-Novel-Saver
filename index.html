@@ -123,7 +123,14 @@
 				<div class="center ln_form">
 					<span>1</span>
 					<div class="input-field col s12">
-						<select id="ln_type" class="validate" onchange="ln_type();">
+						<select
+							id="ln_type"
+							class="validate"
+							onchange="M.toast({
+								html: 'Insert the URL (root page) of the Light Novel'
+								+'<br>\'https\:\/\/www.lightnovelworld.com\/novel\/returnees-life-report\''
+							});"
+						>
 							<option value="none" disabled="disabled" selected="selected"
 							>Choose a website</option>
 							<option value="lightnovelstranslations.com"
@@ -146,8 +153,8 @@
 							type="text"
 							id="ln_url"
 							class="validate"
-							placeholder="URL of the Light Novel..."
-							title="URL of the Light Novel..."
+							placeholder="Insert the URL (root page) of the Light Novel"
+							title="Insert the URL (root page) of the Light Novel"
 							required="required"
 							autocomplete="off"
 						>
@@ -178,7 +185,8 @@
 					Load
 				</a>
 			</div>
-			<div id="ln_download" class="input-field col s12"></div>
+			<div id="ln_download" class="input-field col s12 d-none"></div>
+			<div id="ln_progress_bar" class="input-field col s12 d-none"></div>
 		</section>
 
 		<!-- CopyRights-friendly section -->

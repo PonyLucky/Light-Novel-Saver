@@ -79,6 +79,9 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 			// increment i
 			i++;
 
+			// Display/Update progressBar
+			display_progress_bar();
+
 			// Load the next chapter if there's one
 			if (i < ln_link_chapters.length)
 				ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i);
