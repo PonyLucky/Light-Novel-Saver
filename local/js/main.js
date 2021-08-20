@@ -4,7 +4,7 @@ var ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 // [website][pos]
 //// pos = 0 -> function to launch
 //// pos = 1 -> placeholder/title in URL text input
-var ln_lst = {
+const ln_lst = {
 	"lightnovelstranslations.com": [
 		function() {
 			ln_type_www_lightnovelstranslations_com();
@@ -41,6 +41,10 @@ $(document).ready(function(){
 // When cliking on the button 'LOAD'
 function ln_load() {
 	let type_ln = document.getElementById('ln_type').value;
+
+	// Reset the global variables
+	// Useful when reloading a novel right after another
+	reset_global_variables();
 
 	// If the selected domain is present in the URL
 	if (document.getElementById('ln_url').value.includes(type_ln)) {
@@ -117,4 +121,8 @@ function ln_download() {
 	});
 	ln_download_triger.href = window.URL.createObjectURL(ln_file);
 	ln_download_triger.click();
+}
+
+function reset_global_variables() {
+	ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 }
