@@ -68,7 +68,7 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			if (
 				htmlDoc.querySelector("a.chnav.next").classList
 					.contains('isDisabled')
-			) display_save_button();
+			) ln_download();
 			else {
 				// Display/Update progressBar
 				display_progress_bar();

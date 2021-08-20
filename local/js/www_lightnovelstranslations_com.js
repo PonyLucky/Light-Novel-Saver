@@ -85,7 +85,7 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 			// Load the next chapter if there's one
 			if (i < ln_link_chapters.length)
 				ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i);
-			else display_save_button();
+			else ln_download();
 		}
 	});
 }

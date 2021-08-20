@@ -61,8 +61,6 @@ function ln_load() {
 // Displays the save button to download the LN
 function display_save_button() {
 	let elmt = document.getElementById('ln_download');
-	// Remove the progressBar if present
-	remove_element('ln_progress_bar');
 
 	// Show the save button
 	elmt.classList.remove('d-none');
@@ -120,6 +118,18 @@ function ln_download() {
 	// Local variables
 	let ln_author = document.getElementById('ln_author').value,
 		ln_data, ln_download_triger, ln_file;
+
+	// Remove the progressBar
+	remove_element('ln_progress_bar');
+
+	// Remove the save button if present
+	remove_element('ln_download');
+
+	// Show the SAVE button
+	// 
+	// In case the user cancel the download inadvertently
+	// but don't want to reload everything
+	display_save_button();
 
 	// Format the file
 	ln_data =
