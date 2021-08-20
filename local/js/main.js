@@ -1,11 +1,11 @@
 // Global variables
-var ln_title="", ln_content="";
+var ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 
 // [website][pos]
 //// pos = 0 -> function to launch
 //// pos = 1 -> placeholder/title in URL text input
 var ln_lst = {
-	"www.lightnovelstranslations.com": [
+	"lightnovelstranslations.com": [
 		function() {
 			ln_type_www_lightnovelstranslations_com();
 		},
