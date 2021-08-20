@@ -28,7 +28,7 @@ var ln_lst = {
 		function() {
 			M.toast({html: "Select a website"});
 		},
-		"First choose a website"
+		"URL of the Light Novel..."
 	]
 };
 
