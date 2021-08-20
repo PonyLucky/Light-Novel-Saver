@@ -84,6 +84,12 @@ function ln_type() {
 }
 
 function display_save_button() {
+	// Clear what's inside first
+	if (document.getElementById('ln_download').hasChildNodes()) {
+		document.getElementById('ln_download')
+			.removeChild(document.getElementById('ln_download').firstChild);
+	}
+
 	// Authorize the download now that the proccess is finished
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "Save the Light Novel";
@@ -124,5 +130,8 @@ function ln_download() {
 }
 
 function reset_global_variables() {
-	ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
+	ln_title="";
+	ln_content="";
+	ln_nb_chapters=0;
+	ln_nb_chapters_loaded=1;
 }
