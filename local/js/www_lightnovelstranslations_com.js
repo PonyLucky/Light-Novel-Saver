@@ -11,6 +11,10 @@ function ln_type_www_lightnovelstranslations_com() {
 
 			// Get the title of the Light Novel
 			ln_title = htmlDoc.querySelector("h1.entry-title").innerHTML;
+
+			// Get the author
+			ln_author = htmlDoc.querySelector('div.entry-content p').lastChild.nodeValue;
+			ln_author = ln_author.replace(":", "").trim();
 			
 			// Get the number of chapters of the Light Novel
 			ln_nb_chapters = htmlDoc.querySelector("div.entry-content")
@@ -25,6 +29,7 @@ function ln_type_www_lightnovelstranslations_com() {
 
 			// Show us that we got the right data
 			console.log("Title: "+ln_title);
+			console.log("Author: "+ln_author);
 			console.log("Number of Links (may not be chapters): "+ln_nb_chapters);
 
 			// Load the content of each chapter
@@ -34,6 +39,8 @@ function ln_type_www_lightnovelstranslations_com() {
 }
 
 function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
+	console.log(i);
+	console.log(ln_link_chapters[i]);
 	$.ajax({
 		url: ln_link_chapters[i],
 		success: function(response) {
@@ -63,7 +70,7 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 
 				// Then Put it in the content
 				ln_content += "<h1>"+ln_chapter_title+"</h1>\n"
-					+ln_chapter_content;
+					+ln_chapter_content+"\n\n";
 			}
 			catch (error) {
 				console.info("This link isn't a chapter");

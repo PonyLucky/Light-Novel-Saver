@@ -13,6 +13,10 @@ function ln_type_www_lightnovelworld_com() {
 			ln_title = htmlDoc.querySelector("h1.novel-title").innerHTML;
 			console.log("Title: "+ln_title);
 
+			// Get the author
+			ln_author = htmlDoc.querySelector('div.author').lastElementChild.firstElementChild.innerHTML;
+			console.log("Author: "+ln_author);
+
 			// Get the number of chapters
 			ln_nb_chapters = parseInt(
 				htmlDoc.querySelector('div.header-stats')

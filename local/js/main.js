@@ -1,5 +1,6 @@
 // Global variables
-var ln_title="", ln_content="", ln_nb_chapters=0, ln_nb_chapters_loaded=1;
+var ln_title="", ln_content="", ln_author= "",
+ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 
 // ln_lst[website]
 // Dict to call the right function depending of the website
@@ -116,8 +117,13 @@ function display_progress_bar() {
 // Prepare the file to download
 function ln_download() {
 	// Local variables
-	let ln_author = document.getElementById('ln_author').value,
-		ln_data, ln_download_triger, ln_file;
+	let ln_data, ln_download_triger, ln_file;
+
+	// If input author isn't null
+	// If you want to force one because your ebook can't bear asian chars
+	if (document.getElementById('ln_author').value != "") {
+		ln_author = document.getElementById('ln_author').value;
+	}
 
 	// Remove the progressBar
 	remove_element('ln_progress_bar');
