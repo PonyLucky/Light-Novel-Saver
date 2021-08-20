@@ -1,6 +1,9 @@
 // Global variables
 var ln_title="", ln_content="";
 
+// [website][pos]
+//// pos = 0 -> function to launch
+//// pos = 1 -> placeholder/title in URL text input
 var ln_lst = {
 	"www.lightnovelstranslations.com": [
 		function() {
@@ -71,6 +74,7 @@ function ln_type() {
 		// Set the placehorder and the title in function of the website
 		document.getElementById('ln_url').placeholder = ln_lst[type_ln][1];
 		document.getElementById('ln_url').setAttribute('title', ln_lst[type_ln][1]);
+		M.toast({html: ln_lst[type_ln][1]});
 	}
 	else  console.error("ln_type() -> ln_lst[\""+type_ln+"\"]: invalid value");
 }
