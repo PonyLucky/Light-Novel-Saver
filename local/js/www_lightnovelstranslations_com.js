@@ -11,10 +11,6 @@ function ln_type_www_lightnovelstranslations_com() {
 
 			// Get the title of the Light Novel
 			ln_title = htmlDoc.querySelector("h1.entry-title").innerHTML;
-
-			// Get the author
-			ln_author = htmlDoc.querySelector('div.entry-content p').lastChild.nodeValue;
-			ln_author = ln_author.replace(":", "").trim();
 			
 			// Get the number of chapters of the Light Novel
 			ln_nb_chapters = htmlDoc.querySelector("div.entry-content")
@@ -34,6 +30,9 @@ function ln_type_www_lightnovelstranslations_com() {
 
 			// Load the content of each chapter
 			ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, 0);
+		},
+		error: function() {
+			bad_request(true);
 		}
 	});
 }
@@ -78,7 +77,7 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 			}
 		},
 		error: function() {
-			console.error("The chapter couldn't be loaded");
+			bad_request();
 		},
 		complete: function() {
 			// Regardless of the success or error request

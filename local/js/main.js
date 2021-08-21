@@ -16,7 +16,7 @@ const ln_lst = {
 		ln_type_www_lightnovelworld_com();
 	},
 	"none": function() {
-		M.toast({html: "Select a website"});
+		display_toast("Select a website");
 	}
 };
 
@@ -37,6 +37,13 @@ function ln_load() {
 	// Remove the save button if present
 	remove_element('ln_download');
 
+	// Remove requirements not completed
+	let requirements_icon = document.getElementsByClassName('material-icons')[0];
+	//// Remove the class spin
+	requirements_icon.classList.remove('spin');
+	//// Remove border to the parent div
+	requirements_icon.parentNode.parentNode.classList.remove('border-red');
+
 	// If the selected domain is present in the URL
 	if (document.getElementById('ln_url').value.includes(type_ln)) {
 		// Just a check if I forgot to update 'ln_lst'
@@ -46,16 +53,18 @@ function ln_load() {
 		}
 		else {
 			console.error("ln_load() -> ln_lst[\""+type_ln+"\"]: invalid value");
-			M.toast({
-				html: "<i class='material-icons'>info</i>"
-					+" This website isn't fully implemented yet",
-				classes: "red"
-			});
+			display_toast(
+				"<i class='material-icons'>info</i>"
+				+" This website isn't fully implemented yet",
+				true
+			);
 		}
 	}
 	else {
-		if (document.getElementById('ln_url').value == "") M.toast({html: "Insert an URL"});
-		else M.toast({html: "Insert a page of the chosen website"});
+		if (document.getElementById('ln_url').value == "")
+			display_toast("Insert an URL");
+		else
+			display_toast("Insert a page of the chosen website");
 	}
 }
 
@@ -172,4 +181,34 @@ function remove_element(id) {
 	if (elmt.hasChildNodes()) {
 		elmt.firstChild.remove();
 	}
+}
+
+// Display a toast
+function display_toast(str, is_error=false) {
+	let content = {html: str};
+
+	// Add the class if error
+	if (is_error) content.classes = "red";
+
+	// Display it
+	M.toast(content);
+}
+
+function bad_request(is_CORS_error=false) {
+	if (is_CORS_error) {
+		console.error("Install the extension");
+
+		// Spin the requirements icon and scroll to it
+		let requirements_icon =
+			document.getElementsByClassName('material-icons')[0];
+
+		// Scroll to the requirements icon
+		requirements_icon.scrollIntoView();
+		// Spin it so the user will understand
+		requirements_icon.classList.add('spin');
+
+		// Add border to the parent div
+		requirements_icon.parentNode.parentNode.classList.add('border-red');
+	}
+	else console.error("The chapter couldn't be loaded");
 }

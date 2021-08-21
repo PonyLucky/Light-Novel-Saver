@@ -31,6 +31,9 @@ function ln_type_www_lightnovelworld_com() {
 
 			// Load the first chapter
 			ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter);
+		},
+		error: function() {
+			bad_request(true);
 		}
 	});
 }
@@ -85,8 +88,8 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			}
 			//------------------------------------------------------------------
 		},
-		error: function () {
-			console.error("The chapter couldn't be loaded");
+		error: function() {
+			bad_request();
 		}
 	});
 }
