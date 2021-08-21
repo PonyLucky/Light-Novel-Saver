@@ -37,16 +37,16 @@ const ln_lst = {
 	}
 };
 
-let ln_supported = document.getElementById(lang+'_ln_supported');
+let ln_supported = document.getElementsByClassName('ln_supported')[0];
 
 // Fill #ln_supported
-let ln_type = document.getElementById('ln_type');
+let ln_type = document.getElementsByClassName('ln_type')[0];
 ln_supported.innerHTML += ln_type.innerHTML;
 
 // To enable the select
 // Necessary because of Materialize
 $(document).ready(function(){
-	$('#'+lang+'_ln_supported').formSelect();
+	$('.ln_supported').formSelect();
 });
 
 // When cliking on the button 'LOAD'
@@ -66,7 +66,9 @@ function ln_load() {
 	requirements_icon.parentNode.parentNode.classList.remove('border-red');
 
 	// If the selected domain is present in the URL
-	if (document.getElementById(lang+'_ln_url').value.includes(ln_type.value)) {
+	if (
+		document.getElementsByClassName('ln_url')[0].value.includes(ln_type.value)
+	) {
 		// Just a check if I forgot to update 'ln_lst'
 		if (ln_lst[ln_type.value]) {
 			// And then load the novel with the allocated function
@@ -82,7 +84,7 @@ function ln_load() {
 		}
 	}
 	else {
-		if (document.getElementById(lang+'_ln_url').value == "")
+		if (document.getElementsByClassName('ln_url')[0].value == "")
 			display_toast(lang_lst[lang][3]);
 		else
 			display_toast(lang_lst[lang][4]);
@@ -91,7 +93,7 @@ function ln_load() {
 
 // Displays the save button to download the LN
 function display_save_button() {
-	let elmt = document.getElementById(lang+'_ln_download');
+	let elmt = document.getElementsByClassName('ln_download')[0];
 
 	// Remove the progressBar
 	remove_element('ln_progress_bar');
@@ -119,7 +121,7 @@ function html_parser(str) {
 
 // Displays the progressBar
 function display_progress_bar() {
-	let elmt = document.getElementById(lang+'_ln_progress_bar');
+	let elmt = document.getElementsByClassName('ln_progress_bar')[0];
 
 	// Show the progressBar
 	elmt.classList.remove('d-none');
@@ -181,8 +183,8 @@ function reset_global_variables() {
 }
 
 // Remove the element is present
-function remove_element(id) {
-	let elmt = document.getElementById(lang+'_'+id);
+function remove_element(class_of_element) {
+	let elmt = document.getElementsByClassName(class_of_element)[0];
 
 	// Hide the element
 	elmt.classList.add('d-none');
@@ -225,7 +227,7 @@ function bad_request(is_CORS_error=false) {
 // Triggered on key up
 // Set automatically the select if a website is recognised
 function autocomplete_ln_type() {
-	let ln_url = document.getElementById(lang+'_ln_url').value;
+	let ln_url = document.getElementsByClassName('ln_url')[0].value;
 
 	for (let i = 0; i < ln_type.length; i++) {
 		// Unset the other
@@ -240,16 +242,16 @@ function autocomplete_ln_type() {
 }
 
 function display_metadata() {
-	document.getElementById(lang+'_ln_matadata').classList.remove('d-none');
+	document.getElementsByClassName('ln_matadata')[0].classList.remove('d-none');
 
 	// Set the title if possible
 	if (typeof ln_title == "string") {
-		document.getElementById(lang+'_ln_title').value = ln_title;
+		document.getElementsByClassName('ln_title')[0].value = ln_title;
 	}
 
 	// Set the author if possible
 	if (typeof ln_author == "string") {
-		document.getElementById(lang+'_ln_author').value = ln_author;
+		document.getElementsByClassName('ln_author')[0].value = ln_author;
 	}
 
 	// Set the size of the inputs
@@ -258,8 +260,8 @@ function display_metadata() {
 }
 
 // Set the size of the input depending of its content
-function set_size_input(id) {
-	let elmt = document.getElementById(lang+'_'+id);
+function set_size_input(class_of_element) {
+	let elmt = document.getElementsByClassName(class_of_element)[0];
 	let dummy_span = document.getElementById('dummy_span');
 
 	// If value insert it to the dummy span

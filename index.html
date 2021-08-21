@@ -122,7 +122,7 @@
 				<div class="center ln_info">
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
-						<select id="en_ln_supported" class="validate">
+						<select class="ln_supported validate">
 							<option value="none" disabled="disabled" selected="selected"
 							>Supported websites</option>
 						</select>
@@ -137,8 +137,7 @@
 					<div class="input-field col s12">
 						<input
 							type="text"
-							id="en_ln_url"
-							class="validate"
+							class="ln_url validate"
 							placeholder="Insert the URL (root page) of the Light Novel.."
 							title="Insert the URL (root page) of the Light Novel.."
 							required="required"
@@ -154,7 +153,7 @@
 					Load the Light Novel
 				</a>
 			</div>
-			<div id="en_ln_matadata" class="col s12 code border-red d-none">
+			<div class="ln_matadata col s12 code border-red d-none">
 				&lt;<code class="code-tag">head</code>&gt;<br/>
 				&lt;<code class="code-tag">meta</code>
 					<code class="code-attribute">charset</code>='utf-8'
@@ -162,9 +161,8 @@
 				&lt;<code class="code-tag">title</code>&gt;
 				<input
 					type="text"
-					id="en_ln_title"
 					name="author"
-					class="code-input"
+					class="ln_title code-input"
 					placeholder="Title..."
 					title="Title..."
 					autocomplete="on"
@@ -176,9 +174,8 @@
 					<code class="code-attribute">content</code>='
 					<input
 						type="text"
-						id="en_ln_author"
 						name="author"
-						class="code-input"
+						class="ln_author code-input"
 						placeholder="Author..."
 						title="Author..."
 						autocomplete="on"
@@ -187,8 +184,8 @@
 				'&gt;<br/>
 				&lt;/<code class="code-tag">head</code>&gt;
 			</div>
-			<div id="en_ln_progress_bar" class="input-field col s12 d-none"></div>
-			<div id="en_ln_download" class="input-field col s12 d-none"></div>
+			<div class="progress_bar input-field col s12 d-none"></div>
+			<div class="ln_download input-field col s12 d-none"></div>
 		</section>
 	
 		<!-- CopyRights-friendly section -->
@@ -277,7 +274,7 @@
 				<div class="center ln_info">
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
-						<select id="fr_ln_supported" class="validate">
+						<select class="ln_supported validate">
 							<option value="none" disabled="disabled" selected="selected"
 							>Sites supportés</option>
 						</select>
@@ -292,8 +289,7 @@
 					<div class="input-field col s12">
 						<input
 							type="text"
-							id="fr_ln_url"
-							class="validate"
+							class="ln_url validate"
 							placeholder="Insérez l'URL (du sommaire) du roman..."
 							title="Insérez l'URL (du sommaire) du roman..."
 							required="required"
@@ -309,7 +305,7 @@
 					Charger le roman
 				</a>
 			</div>
-			<div id="fr_ln_matadata" class="col s12 code border-red d-none">
+			<div class="ln_matadata col s12 code border-red d-none">
 				&lt;<code class="code-tag">head</code>&gt;<br/>
 				&lt;<code class="code-tag">meta</code>
 					<code class="code-attribute">charset</code>='utf-8'
@@ -317,9 +313,8 @@
 				&lt;<code class="code-tag">title</code>&gt;
 				<input
 					type="text"
-					id="fr_ln_title"
 					name="author"
-					class="code-input"
+					class="ln_title code-input"
 					placeholder="Titre..."
 					title="Titre..."
 					autocomplete="on"
@@ -331,9 +326,8 @@
 					<code class="code-attribute">content</code>='
 					<input
 						type="text"
-						id="fr_ln_author"
 						name="author"
-						class="code-input"
+						class="ln_author code-input"
 						placeholder="Auteur..."
 						title="Auteur..."
 						autocomplete="on"
@@ -342,8 +336,8 @@
 				'&gt;<br/>
 				&lt;/<code class="code-tag">head</code>&gt;
 			</div>
-			<div id="fr_ln_progress_bar" class="input-field col s12 d-none"></div>
-			<div id="fr_ln_download" class="input-field col s12 d-none"></div>
+			<div class="ln_progress_bar input-field col s12 d-none"></div>
+			<div class="ln_download input-field col s12 d-none"></div>
 		</section>
 	
 		<!-- CopyRights-friendly section -->
@@ -368,7 +362,7 @@
 
 	<!-- Select - website -->
 	<div class="d-none">
-		<select id="ln_type" class="validate">
+		<select class="ln_type validate">
 			<option value="lightnovelstranslations.com"
 			>lightnovelstranslations.com</option>
 			<option value="www.lightnovelworld.com"

@@ -4,7 +4,7 @@ function ln_type_www_lightnovelworld_com() {
 
 	// Load the summary (for lightnovelworld.com)
 	$.ajax({
-		url: document.getElementById(lang+'_ln_url').value,
+		url: document.getElementsByClassName('ln_url')[0].value,
 		success: function(response,status) {
 			// Format the response
 			let htmlDoc = html_parser(response);

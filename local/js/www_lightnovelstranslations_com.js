@@ -4,7 +4,7 @@ function ln_type_www_lightnovelstranslations_com() {
 
 	// Load the summary of the chapters (for lightnovelstranslations.com)
 	$.ajax({
-		url: document.getElementById(lang+'_ln_url').value,
+		url: document.getElementsByClassName('ln_url')[0].value,
 		success: function(response) {
 			// Format the response
 			let htmlDoc = html_parser(response);
