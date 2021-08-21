@@ -104,8 +104,6 @@ a:hover:not(.btn), a:active:not(.btn) {
   padding: 1em !important;
   margin: 2em 0 !important;
   text-align: left;
-  border-radius: 10px;
-  border: 1px solid #ee6e73;
 }
 
 .code-tag {

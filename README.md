@@ -15,7 +15,7 @@ HTML, JS and CSS languages are interpreted so you don't need to compile anything
 1. Make sure to download the whole project;
 2. Just open **index.html**.
 
-## Fonctionalities
+## Functionalities
 ### Websites currently supported
 * www.lightnovelstranslations.com
 * www.lightnovelworld.com
