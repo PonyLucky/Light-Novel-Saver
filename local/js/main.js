@@ -250,10 +250,12 @@ function display_metadata() {
 	set_size_input('ln_author');
 }
 
+// Set the size of the input depending of its content
 function set_size_input(id) {
 	let elmt = document.getElementById(id);
 	let dummy_span = document.getElementById('dummy_span');
 
+	// If value insert it to the dummy span
 	if (elmt.value.length > 0) {
 		dummy_span.innerHTML = elmt.value;
 	}
@@ -261,6 +263,8 @@ function set_size_input(id) {
 		dummy_span.innerHTML = elmt.placeholder;
 	}
 
+	// An element with 'display: none;' doesn't have a width
+	// Hence we need to display him
 	dummy_span.parentNode.classList.remove('d-none');
 
 	elmt.setAttribute(
