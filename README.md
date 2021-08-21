@@ -16,6 +16,10 @@ HTML, JS and CSS languages are interpreted so you don't need to compile anything
 2. Just open **index.html**.
 
 ## Functionalities
+### Supported languages
+* English
+* Français
+
 ### Websites currently supported
 * www.lightnovelstranslations.com
 * www.lightnovelworld.com
