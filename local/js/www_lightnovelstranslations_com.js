@@ -28,6 +28,9 @@ function ln_type_www_lightnovelstranslations_com() {
 			console.log("Author: "+ln_author);
 			console.log("Number of Links (may not be chapters): "+ln_nb_chapters);
 
+			// Display the metadata
+			display_metadata();
+
 			// Load the content of each chapter
 			ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, 0);
 		},
@@ -91,7 +94,7 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 			// Load the next chapter if there's one
 			if (i < ln_link_chapters.length)
 				ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i);
-			else ln_download();
+			else display_save_button();
 		}
 	});
 }

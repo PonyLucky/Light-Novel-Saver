@@ -85,6 +85,9 @@ function ln_load() {
 function display_save_button() {
 	let elmt = document.getElementById('ln_download');
 
+	// Remove the progressBar
+	remove_element('ln_progress_bar');
+
 	// Show the save button
 	elmt.classList.remove('d-none');
 
@@ -141,23 +144,8 @@ function ln_download() {
 	// Local variables
 	let ln_data, ln_download_triger, ln_file;
 
-	// If input author isn't null
-	// If you want to force one because your ebook can't bear asian chars
-	if (document.getElementById('ln_author').value != "") {
-		ln_author = document.getElementById('ln_author').value;
-	}
-
-	// Remove the progressBar
-	remove_element('ln_progress_bar');
-
 	// Remove the save button if present
 	remove_element('ln_download');
-
-	// Show the SAVE button
-	// 
-	// In case the user cancel the download inadvertently
-	// but don't want to reload everything
-	display_save_button();
 
 	// Format the file
 	ln_data =
@@ -242,5 +230,19 @@ function autocomplete_ln_type() {
 			ln_type.options[i].setAttribute('selected', 'selected');
 			break;
 		}
+	}
+}
+
+function display_metadata() {
+	document.getElementById('ln_matadata').classList.remove('d-none');
+
+	// Set the title if possible
+	if (typeof ln_title == "string") {
+		document.getElementById('ln_title').value = ln_title;
+	}
+
+	// Set the author if possible
+	if (typeof ln_author == "string") {
+		document.getElementById('ln_author').value = ln_author;
 	}
 }

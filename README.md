@@ -16,10 +16,14 @@ HTML, JS and CSS languages are interpreted so you don't need to compile anything
 2. Just open **index.html**.
 
 ## Fonctionalities
-Websites currently supported:
+### Websites currently supported
 * www.lightnovelstranslations.com
 * www.lightnovelworld.com
 * www.novelpub.com
+
+### Metadata included
+![Metadata](local/img/Light-Novel-Saver-metadata.jpg)
+As you can see, the metadata are imported directly from the website and you can modify them while waiting for the chapters to be loaded.
 
 ## Informations
 If you see a supported website not working, please notify us with the **Issues** Pannel, add the **URL** so we can fix it.

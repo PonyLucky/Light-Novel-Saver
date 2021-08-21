@@ -29,6 +29,9 @@ function ln_type_www_lightnovelworld_com() {
 			ln_link_next_chapter = htmlDoc.getElementById('readchapterbtn')
 				.getAttribute('href');
 
+			// Display the metadata
+			display_metadata();
+
 			// Load the first chapter
 			ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter);
 		},
@@ -75,7 +78,7 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			if (
 				htmlDoc.querySelector("a.chnav.next").classList
 					.contains('isDisabled')
-			) ln_download();
+			) display_save_button();
 			else {
 				// Display/Update progressBar
 				display_progress_bar();

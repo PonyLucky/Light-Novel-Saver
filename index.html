@@ -132,7 +132,7 @@
 
 		<section class="row">
 			<!-- List of supported websites -->
-			<div class="col s12 col-div-3">
+			<div class="col s12 col-div-2">
 				<div class="center ln_info">
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
@@ -145,7 +145,7 @@
 			</div>
 
 			<!-- Input to insert the URL -->
-			<div class="col s12 col-div-3">
+			<div class="col s12 col-div-2">
 				<div class="center ln_info">
 					<i class="material-icons">border_color</i>
 					<div class="input-field col s12">
@@ -163,31 +163,44 @@
 				</div>
 			</div>
 
-			<!-- Input to insert the author -->
-			<!-- 'name' for the autocomplete -->
-			<div class="col s12 col-div-3">
-				<div class="center ln_info">
-					<i class="material-icons">person_add</i>
-					<div class="input-field col s12">
-						<input
-							type="text"
-							id="ln_author"
-							name="author"
-							class="validate"
-							placeholder="[automatic] Force author if you don't want asian chars..."
-							title="[automatic] Force author if you don't want asian chars..."
-							autocomplete="on"
-						>
-					</div>
-				</div>
-			</div>
 			<div class="input-field col s12">
 				<a class="waves-effect waves-light btn" onclick="ln_load();">
 					Load the Light Novel
 				</a>
 			</div>
-			<div id="ln_download" class="input-field col s12 d-none"></div>
+			<div id="ln_matadata" class="col s12 code d-none">
+				&lt;<code class="code-tag">head</code>&gt;<br/>
+				&lt;<code class="code-tag">meta</code>
+					<code class="code-attribute">charset</code>='utf-8'
+				&gt;<br/>
+				&lt;<code class="code-tag">title</code>&gt;
+				<input
+					type="text"
+					id="ln_title"
+					name="author"
+					class="code-input"
+					placeholder="Title..."
+					title="Title..."
+					autocomplete="on"
+				>
+				&lt;/<code class="code-tag">title</code>&gt;<br/>
+				&lt;<code class="code-tag">meta</code>
+					<code class="code-attribute">name</code>='author'
+					<code class="code-attribute">content</code>='
+					<input
+						type="text"
+						id="ln_author"
+						name="author"
+						class="code-input"
+						placeholder="Author..."
+						title="Author..."
+						autocomplete="on"
+					>
+				'&gt;<br/>
+				&lt;/<code class="code-tag">head</code>&gt;
+			</div>
 			<div id="ln_progress_bar" class="input-field col s12 d-none"></div>
+			<div id="ln_download" class="input-field col s12 d-none"></div>
 		</section>
 
 		<!-- CopyRights-friendly section -->
