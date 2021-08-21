@@ -23,12 +23,10 @@ const ln_lst = {
 // Fill #ln_supported
 let ln_type = document.getElementById('ln_type');
 for (let i = 0; i < ln_type.length; i++) {
-	if (ln_type.options[i].value != 'none') {
-		let option = document.createElement('OPTION');
-		option.innerHTML = ln_type.options[i].innerHTML;
-		option.setAttribute('value', ln_type.options[i].value);
-		document.getElementById('ln_supported').appendChild(option);
-	}
+	let option = document.createElement('OPTION');
+	option.innerHTML = ln_type.options[i].innerHTML;
+	option.setAttribute('value', ln_type.options[i].value);
+	document.getElementById('ln_supported').appendChild(option);
 }
 
 let ln_supported = document.getElementById('ln_supported');
