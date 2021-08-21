@@ -116,29 +116,29 @@
 			</div>
 		</section>
 
-		<!-- Form -->
+		<!-- Select - website -->
+		<div class="d-none">
+			<select id="ln_type" class="validate">
+				<option value="none" disabled="disabled" selected="selected"
+				>Choose a website</option>
+				<option value="lightnovelstranslations.com"
+				>lightnovelstranslations.com</option>
+				<option value="www.lightnovelworld.com"
+				>www.lightnovelworld.com</option>
+				<option value="www.novelpub.com"
+				>www.novelpub.com</option>
+			</select>
+		</div>
+
 		<section class="row">
-			<!-- Choice of the website -->
+			<!-- List of supported websites -->
 			<div class="col s12 col-div-3">
-				<div class="center ln_form">
-					<span>1</span>
+				<div class="center ln_info">
+					<i class="material-icons">language</i>
 					<div class="input-field col s12">
-						<select
-							id="ln_type"
-							class="validate"
-							onchange="display_toast(
-								'Insert the URL (root page) of the Light Novel'
-								+'<br>\'https\:\/\/www.lightnovelworld.com\/novel\/returnees-life-report\''
-							);"
-						>
+						<select id="ln_supported" class="validate">
 							<option value="none" disabled="disabled" selected="selected"
-							>Choose a website</option>
-							<option value="lightnovelstranslations.com"
-							>lightnovelstranslations.com</option>
-							<option value="www.lightnovelworld.com"
-							>www.lightnovelworld.com</option>
-							<option value="www.novelpub.com"
-							>www.novelpub.com</option>
+							>Supported websites</option>
 						</select>
 					</div>
 				</div>
@@ -146,8 +146,8 @@
 
 			<!-- Input to insert the URL -->
 			<div class="col s12 col-div-3">
-				<div class="center ln_form">
-					<span>2</span>
+				<div class="center ln_info">
+					<i class="material-icons">border_color</i>
 					<div class="input-field col s12">
 						<input
 							type="text"
@@ -166,8 +166,8 @@
 			<!-- Input to insert the author -->
 			<!-- 'name' for the autocomplete -->
 			<div class="col s12 col-div-3">
-				<div class="center ln_form">
-					<span>3</span>
+				<div class="center ln_info">
+					<i class="material-icons">person_add</i>
 					<div class="input-field col s12">
 						<input
 							type="text"

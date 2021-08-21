@@ -20,10 +20,23 @@ const ln_lst = {
 	}
 };
 
-// The enable the select
+// Fill #ln_supported
+let ln_type = document.getElementById('ln_type');
+for (let i = 0; i < ln_type.length; i++) {
+	if (ln_type.options[i].value != 'none') {
+		let option = document.createElement('OPTION');
+		option.innerHTML = ln_type.options[i].innerHTML;
+		option.setAttribute('value', ln_type.options[i].value);
+		document.getElementById('ln_supported').appendChild(option);
+	}
+}
+
+let ln_supported = document.getElementById('ln_supported');
+
+// To enable the select
 // Necessary because of Materialize
 $(document).ready(function(){
-	$('select').formSelect();
+	$('#ln_supported').formSelect();
 });
 
 // When cliking on the button 'LOAD'
@@ -64,7 +77,7 @@ function ln_load() {
 		if (document.getElementById('ln_url').value == "")
 			display_toast("Insert an URL");
 		else
-			display_toast("Insert a page of the chosen website");
+			display_toast("This website isn't implemented yet");
 	}
 }
 
@@ -219,14 +232,14 @@ function autocomplete_ln_type() {
 	let ln_type = document.getElementById('ln_type');
 	let ln_url = document.getElementById('ln_url').value;
 
-	for (let i = 1; i < ln_type.length; i++) {
+	for (let i = 0; i < ln_type.length; i++) {
+		// Unset the other
+		ln_type.options[i].removeAttribute('selected');
+
 		console.log(ln_url.includes(ln_type.options[i].innerHTML));
 		if (ln_url.includes(ln_type.options[i].innerHTML)) {
-			// Set the value of the select
-			ln_type.value = ln_type.options[i].innerHTML;
-			
-			// Re-initialize material-select
-			$('select').formSelect();
+			// Set the option
+			ln_type.options[i].setAttribute('selected', 'selected');
 			break;
 		}
 	}
