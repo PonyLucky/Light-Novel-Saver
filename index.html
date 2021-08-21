@@ -116,20 +116,6 @@
 			</div>
 		</section>
 
-		<!-- Select - website -->
-		<div class="d-none">
-			<select id="ln_type" class="validate">
-				<option value="none" disabled="disabled" selected="selected"
-				>Choose a website</option>
-				<option value="lightnovelstranslations.com"
-				>lightnovelstranslations.com</option>
-				<option value="www.lightnovelworld.com"
-				>www.lightnovelworld.com</option>
-				<option value="www.novelpub.com"
-				>www.novelpub.com</option>
-			</select>
-		</div>
-
 		<section class="row">
 			<!-- List of supported websites -->
 			<div class="col s12 col-div-2">
@@ -182,6 +168,7 @@
 					placeholder="Title..."
 					title="Title..."
 					autocomplete="on"
+					onkeyup="set_size_input('ln_title');"
 				>
 				&lt;/<code class="code-tag">title</code>&gt;<br/>
 				&lt;<code class="code-tag">meta</code>
@@ -195,6 +182,7 @@
 						placeholder="Author..."
 						title="Author..."
 						autocomplete="on"
+						onkeyup="set_size_input('ln_author');"
 					>
 				'&gt;<br/>
 				&lt;/<code class="code-tag">head</code>&gt;
@@ -220,6 +208,23 @@
 			</div>
 		</section>
 	</main>
+
+	<!-- Select - website -->
+	<div class="d-none">
+		<select id="ln_type" class="validate">
+			<option value="none" disabled="disabled" selected="selected"
+			>Choose a website</option>
+			<option value="lightnovelstranslations.com"
+			>lightnovelstranslations.com</option>
+			<option value="www.lightnovelworld.com"
+			>www.lightnovelworld.com</option>
+			<option value="www.novelpub.com"
+			>www.novelpub.com</option>
+		</select>
+	</div>
+
+	<!-- Dummy div for sizing the text -->
+	<div class="d-none"><span id="dummy_span"></span></div>
 
 	<!-- Scripts -->
 	<!---- vendors -->

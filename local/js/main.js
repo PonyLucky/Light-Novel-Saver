@@ -224,7 +224,6 @@ function autocomplete_ln_type() {
 		// Unset the other
 		ln_type.options[i].removeAttribute('selected');
 
-		console.log(ln_url.includes(ln_type.options[i].innerHTML));
 		if (ln_url.includes(ln_type.options[i].innerHTML)) {
 			// Set the option
 			ln_type.options[i].setAttribute('selected', 'selected');
@@ -245,4 +244,29 @@ function display_metadata() {
 	if (typeof ln_author == "string") {
 		document.getElementById('ln_author').value = ln_author;
 	}
+
+	// Set the size of the inputs
+	set_size_input('ln_title');
+	set_size_input('ln_author');
+}
+
+function set_size_input(id) {
+	let elmt = document.getElementById(id);
+	let dummy_span = document.getElementById('dummy_span');
+
+	if (elmt.value.length > 0) {
+		dummy_span.innerHTML = elmt.value;
+	}
+	else {
+		dummy_span.innerHTML = elmt.placeholder;
+	}
+
+	dummy_span.parentNode.classList.remove('d-none');
+
+	elmt.setAttribute(
+		'style',
+		'width: ' + dummy_span.offsetWidth + 'px !important;'
+	);
+
+	dummy_span.parentNode.classList.add('d-none');
 }

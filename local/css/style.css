@@ -115,7 +115,12 @@ a:hover:not(.btn), a:active:not(.btn) {
 }
 
 .code-input {
-  width: auto !important;
   height: 1.5em !important;
   border-radius: 5px !important;
+  min-width: 4px !important;
+  max-width: 250px !important;
+}
+
+#dummy_span {
+  font-size: 16px;
 }
