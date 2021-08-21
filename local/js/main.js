@@ -97,6 +97,9 @@ function display_save_button() {
 	btn.className = "waves-effect waves-light btn";
 	btn.setAttribute('onclick', 'ln_download();');
 	elmt.appendChild(btn);
+
+	// Auto-launch the download
+	btn.click();
 }
 
 // To parse a formal String to an HTML document
@@ -143,9 +146,6 @@ function display_progress_bar() {
 function ln_download() {
 	// Local variables
 	let ln_data, ln_download_triger, ln_file;
-
-	// Remove the save button if present
-	remove_element('ln_download');
 
 	// Format the file
 	ln_data =
