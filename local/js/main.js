@@ -212,3 +212,22 @@ function bad_request(is_CORS_error=false) {
 	}
 	else console.error("The chapter couldn't be loaded");
 }
+
+// Triggered on key up
+// Set automatically the select if a website is recognised
+function autocomplete_ln_type() {
+	let ln_type = document.getElementById('ln_type');
+	let ln_url = document.getElementById('ln_url').value;
+
+	for (let i = 1; i < ln_type.length; i++) {
+		console.log(ln_url.includes(ln_type.options[i].innerHTML));
+		if (ln_url.includes(ln_type.options[i].innerHTML)) {
+			// Set the value of the select
+			ln_type.value = ln_type.options[i].innerHTML;
+			
+			// Re-initialize material-select
+			$('select').formSelect();
+			break;
+		}
+	}
+}
