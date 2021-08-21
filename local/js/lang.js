@@ -1,8 +1,9 @@
+var lang = ((navigator.languages && navigator.languages[0])
+  || navigator.language || navigator.userLanguage || 'en').substr(0, 2);
+
 // Choose the file to import depending of the user's language
 $(document).ready(function() {
   var known = { en: true, fr: true };
-  var lang  = ((navigator.languages && navigator.languages[0])
-    || navigator.language || navigator.userLanguage || 'en').substr(0, 2);
 
   // If the language isn't know, english
   if(!known[lang]) lang = 'en';

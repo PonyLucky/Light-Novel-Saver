@@ -2,6 +2,23 @@
 var ln_title="", ln_content="", ln_author= "",
 ln_nb_chapters=0, ln_nb_chapters_loaded=1;
 
+lang_lst = {
+	en: {
+		1: "Select a website",
+		2: "This website isn't fully implemented yet",
+		3: "Insert an URL",
+		4: "This website isn't implemented yet",
+		5: "Save the Light Novel",
+	},
+	fr: {
+		1: "Choisissez un site",
+		2: "Ce site n'est encore complétement implémenté",
+		3: "Insérez un URL",
+		4: "Ce site n'est pas encore implémenté",
+		5: "Sauvegarder le roman",
+	}
+}
+
 // ln_lst[website]
 // Dict to call the right function depending of the website
 const ln_lst = {
@@ -16,31 +33,24 @@ const ln_lst = {
 		ln_type_www_lightnovelworld_com();
 	},
 	"none": function() {
-		display_toast("Select a website");
+		display_toast(lang_lst[lang][1]);
 	}
 };
 
+let ln_supported = document.getElementById(lang+'_ln_supported');
+
 // Fill #ln_supported
 let ln_type = document.getElementById('ln_type');
-for (let i = 0; i < ln_type.length; i++) {
-	let option = document.createElement('OPTION');
-	option.innerHTML = ln_type.options[i].innerHTML;
-	option.setAttribute('value', ln_type.options[i].value);
-	document.getElementById('ln_supported').appendChild(option);
-}
-
-let ln_supported = document.getElementById('ln_supported');
+ln_supported.innerHTML += ln_type.innerHTML;
 
 // To enable the select
 // Necessary because of Materialize
 $(document).ready(function(){
-	$('#ln_supported').formSelect();
+	$('#'+lang+'_ln_supported').formSelect();
 });
 
 // When cliking on the button 'LOAD'
 function ln_load() {
-	let type_ln = document.getElementById('ln_type').value;
-
 	// Reset the global variables
 	// Useful when reloading a novel right after another
 	reset_global_variables();
@@ -56,32 +66,32 @@ function ln_load() {
 	requirements_icon.parentNode.parentNode.classList.remove('border-red');
 
 	// If the selected domain is present in the URL
-	if (document.getElementById('ln_url').value.includes(type_ln)) {
+	if (document.getElementById(lang+'_ln_url').value.includes(ln_type.value)) {
 		// Just a check if I forgot to update 'ln_lst'
-		if (ln_lst[type_ln]) {
+		if (ln_lst[ln_type.value]) {
 			// And then load the novel with the allocated function
-			ln_lst[type_ln]();
+			ln_lst[ln_type.value]();
 		}
 		else {
-			console.error("ln_load() -> ln_lst[\""+type_ln+"\"]: invalid value");
+			console.error("ln_load() -> ln_lst[\""+ln_type.value+"\"]: invalid value");
 			display_toast(
-				"<i class='material-icons'>info</i>"
-				+" This website isn't fully implemented yet",
+				"<i class='material-icons'>info</i> "
+				+lang_lst[lang][2],
 				true
 			);
 		}
 	}
 	else {
-		if (document.getElementById('ln_url').value == "")
-			display_toast("Insert an URL");
+		if (document.getElementById(lang+'_ln_url').value == "")
+			display_toast(lang_lst[lang][3]);
 		else
-			display_toast("This website isn't implemented yet");
+			display_toast(lang_lst[lang][4]);
 	}
 }
 
 // Displays the save button to download the LN
 function display_save_button() {
-	let elmt = document.getElementById('ln_download');
+	let elmt = document.getElementById(lang+'_ln_download');
 
 	// Remove the progressBar
 	remove_element('ln_progress_bar');
@@ -91,7 +101,7 @@ function display_save_button() {
 
 	// Authorize the download now that the proccess is finished
 	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "Save the Light Novel";
+	btn.innerHTML = lang_lst[lang][5];
 	btn.className = "waves-effect waves-light btn";
 	btn.setAttribute('onclick', 'ln_download();');
 	elmt.appendChild(btn);
@@ -109,7 +119,7 @@ function html_parser(str) {
 
 // Displays the progressBar
 function display_progress_bar() {
-	let elmt = document.getElementById('ln_progress_bar');
+	let elmt = document.getElementById(lang+'_ln_progress_bar');
 
 	// Show the progressBar
 	elmt.classList.remove('d-none');
@@ -172,7 +182,7 @@ function reset_global_variables() {
 
 // Remove the element is present
 function remove_element(id) {
-	let elmt = document.getElementById(id);
+	let elmt = document.getElementById(lang+'_'+id);
 
 	// Hide the element
 	elmt.classList.add('d-none');
@@ -215,8 +225,7 @@ function bad_request(is_CORS_error=false) {
 // Triggered on key up
 // Set automatically the select if a website is recognised
 function autocomplete_ln_type() {
-	let ln_type = document.getElementById('ln_type');
-	let ln_url = document.getElementById('ln_url').value;
+	let ln_url = document.getElementById(lang+'_ln_url').value;
 
 	for (let i = 0; i < ln_type.length; i++) {
 		// Unset the other
@@ -231,16 +240,16 @@ function autocomplete_ln_type() {
 }
 
 function display_metadata() {
-	document.getElementById('ln_matadata').classList.remove('d-none');
+	document.getElementById(lang+'_ln_matadata').classList.remove('d-none');
 
 	// Set the title if possible
 	if (typeof ln_title == "string") {
-		document.getElementById('ln_title').value = ln_title;
+		document.getElementById(lang+'_ln_title').value = ln_title;
 	}
 
 	// Set the author if possible
 	if (typeof ln_author == "string") {
-		document.getElementById('ln_author').value = ln_author;
+		document.getElementById(lang+'_ln_author').value = ln_author;
 	}
 
 	// Set the size of the inputs
@@ -250,7 +259,7 @@ function display_metadata() {
 
 // Set the size of the input depending of its content
 function set_size_input(id) {
-	let elmt = document.getElementById(id);
+	let elmt = document.getElementById(lang+'_'+id);
 	let dummy_span = document.getElementById('dummy_span');
 
 	// If value insert it to the dummy span
