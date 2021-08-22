@@ -1,6 +1,7 @@
 // Global variables
 var ln_title="", ln_content="", ln_author= "",
-ln_nb_chapters=0, ln_nb_chapters_loaded=1;
+ln_nb_chapters=0, ln_nb_chapters_loaded=1,
+ln_type="";
 
 lang_lst = {
 	en: {
@@ -38,14 +39,20 @@ const ln_lst = {
 };
 
 let ln_supported = document.getElementsByClassName('ln_supported')[0];
-
-// Fill #ln_supported
-let ln_type = document.getElementsByClassName('ln_type')[0];
-ln_supported.innerHTML += ln_type.innerHTML;
-
-// To enable the select
-// Necessary because of Materialize
 $(document).ready(function(){
+	// Fill .ln_supported
+	let keys = Object.keys(ln_lst);
+	for (let i = 0; i < keys.length-1; i++) {
+		// Create an option from the supported websites
+		let option = document.createElement("OPTION");
+		option.innerHTML = keys[i];
+
+		// Append in the document
+		$('.ln_supported').append(option);
+	}
+
+	// To enable the select
+	// Necessary because of Materialize
 	$('.ln_supported').formSelect();
 });
 
@@ -65,23 +72,10 @@ function ln_load() {
 	//// Remove border to the parent div
 	requirements_icon.parentNode.parentNode.classList.remove('border-red');
 
-	// If the selected domain is present in the URL
-	if (
-		document.getElementsByClassName('ln_url')[0].value.includes(ln_type.value)
-	) {
-		// Just a check if I forgot to update 'ln_lst'
-		if (ln_lst[ln_type.value]) {
-			// And then load the novel with the allocated function
-			ln_lst[ln_type.value]();
-		}
-		else {
-			console.error("ln_load() -> ln_lst[\""+ln_type.value+"\"]: invalid value");
-			display_toast(
-				"<i class='material-icons'>info</i> "
-				+lang_lst[lang][2],
-				true
-			);
-		}
+	// If the URL is from a supported website
+	if (is_website_supported()) {
+		// Load the novel with the allocated function
+		ln_lst[ln_type]();
 	}
 	else {
 		if (document.getElementsByClassName('ln_url')[0].value == "")
@@ -224,21 +218,19 @@ function bad_request(is_CORS_error=false) {
 	else console.error("The chapter couldn't be loaded");
 }
 
-// Triggered on key up
-// Set automatically the select if a website is recognised
-function autocomplete_ln_type() {
+// Return 'true' if a supported website is recognised
+function is_website_supported() {
 	let ln_url = document.getElementsByClassName('ln_url')[0].value;
+	let keys = Object.keys(ln_lst);
 
-	for (let i = 0; i < ln_type.length; i++) {
-		// Unset the other
-		ln_type.options[i].removeAttribute('selected');
-
-		if (ln_url.includes(ln_type.options[i].innerHTML)) {
-			// Set the option
-			ln_type.options[i].setAttribute('selected', 'selected');
-			break;
+	for (let i = 0; i < keys.length; i++) {
+		if (ln_url.includes(keys[i])) {
+			ln_type = keys[i];
+			console.log(ln_type);
+			return true;
 		}
 	}
+	return false;
 }
 
 function display_metadata() {

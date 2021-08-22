@@ -123,7 +123,7 @@
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
 						<select class="ln_supported validate">
-							<option value="none" disabled="disabled" selected="selected"
+							<option disabled="disabled" selected="selected"
 							>Supported websites</option>
 						</select>
 					</div>
@@ -142,7 +142,6 @@
 							title="Insert the URL (root page) of the Light Novel.."
 							required="required"
 							autocomplete="off"
-							onkeyup="autocomplete_ln_type();"
 						>
 					</div>
 				</div>
@@ -185,7 +184,7 @@
 				'&gt;<br/>
 				&lt;/<code class="code-tag">head</code>&gt;
 			</div>
-			<div class="progress_bar input-field col s12 d-none"></div>
+			<div class="ln_progress_bar input-field col s12 d-none"></div>
 			<div class="ln_download input-field col s12 d-none"></div>
 		</section>
 	
@@ -276,7 +275,7 @@
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
 						<select class="ln_supported validate">
-							<option value="none" disabled="disabled" selected="selected"
+							<option disabled="disabled" selected="selected"
 							>Sites supportés</option>
 						</select>
 					</div>
@@ -295,7 +294,6 @@
 							title="Insérez l'URL (du sommaire) du roman..."
 							required="required"
 							autocomplete="off"
-							onkeyup="autocomplete_ln_type();"
 						>
 					</div>
 				</div>
@@ -361,18 +359,6 @@
 			</div>
 		</section>
 	</main>
-
-	<!-- Select - website -->
-	<div class="d-none">
-		<select class="ln_type validate">
-			<option value="lightnovelstranslations.com"
-			>lightnovelstranslations.com</option>
-			<option value="www.lightnovelworld.com"
-			>www.lightnovelworld.com</option>
-			<option value="www.novelpub.com"
-			>www.novelpub.com</option>
-		</select>
-	</div>
 
 	<!-- Dummy div for sizing the text -->
 	<div class="d-none"><span id="dummy_span"></span></div>
