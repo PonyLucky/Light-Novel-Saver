@@ -11,9 +11,13 @@ Install this [extension](https://chrome.google.com/webstore/detail/moesif-origin
 to be able to load content from other websites. (_And turn it '**ON**'_).
 
 ## How to use
+### Offline
 HTML, JS and CSS languages are interpreted so you don't need to compile anything:
 1. Make sure to download the whole project;
 2. Just open **index.html**.
+
+### Online
+On this link: https://loving-saha-24c469.netlify.app/.
 
 ## Functionalities
 ### Supported languages
