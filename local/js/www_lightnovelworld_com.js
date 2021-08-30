@@ -80,6 +80,9 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 					.contains('isDisabled')
 			) display_save_button();
 			else {
+				// Display/Update progress text
+				display_progress_text(ln_chapter_title);
+
 				// Display/Update progressBar
 				display_progress_bar();
 

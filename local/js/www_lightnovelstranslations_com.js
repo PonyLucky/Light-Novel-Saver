@@ -88,6 +88,9 @@ function ln_type_www_lightnovelstranslations_com_chapter(ln_link_chapters, i) {
 			// increment i
 			i++;
 
+			// Display/Update progress text
+			display_progress_text((ln_nb_chapters_loaded++)+"/"+ln_nb_chapters);
+
 			// Display/Update progressBar
 			display_progress_bar();
 

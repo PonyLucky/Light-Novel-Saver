@@ -98,6 +98,9 @@ function ln_load() {
 function display_save_button() {
 	let elmt = document.getElementsByClassName('ln_download')[0];
 
+	// Remove the progress text
+	remove_element('ln_progress_text');
+	
 	// Remove the progressBar
 	remove_element('ln_progress_bar');
 
@@ -120,6 +123,26 @@ function display_save_button() {
 function html_parser(str) {
 	let parser = new DOMParser();
 	return parser.parseFromString(str,"text/html");
+}
+
+// Displays the progress text
+function display_progress_text(title) {
+	let elmt = document.getElementsByClassName('ln_progress_text')[0];
+
+	// Show the progress text
+	elmt.classList.remove('d-none');
+
+	// If the text isn't here, create it
+	if (!elmt.hasChildNodes()) {
+		// Main progress text
+		let progress_text = document.createElement("SPAN");
+		progress_text.className = "center";
+		progress_text.innerHTML = title;
+
+		// Append in the document
+		elmt.appendChild(progress_text);
+	}
+	else elmt.firstElementChild.innerHTML = title;
 }
 
 // Displays the progressBar
@@ -159,6 +182,10 @@ function display_progress_bar() {
 function ln_download() {
 	// Local variables
 	let ln_data, ln_download_triger, ln_file;
+
+	// To take what the user wrote in the inputs
+	ln_title = document.getElementsByClassName('ln_title')[0].value;
+	ln_author = document.getElementsByClassName('ln_author')[0].value;
 
 	// Format the file
 	ln_data =
