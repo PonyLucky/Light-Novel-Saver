@@ -47,7 +47,7 @@ $(document).ready(function(){
 		let option = document.createElement("OPTION");
 		option.innerHTML = keys[i];
 
-		// Append in the document
+		// Append it in the document
 		$('.ln_supported').append(option);
 	}
 
@@ -55,8 +55,14 @@ $(document).ready(function(){
 	// Necessary because of Materialize
 	$('.ln_supported').formSelect();
 
-	// Autofocus to the input ln_url
+	// Autofocus to the input .ln_url
 	$('.ln_url').focus();
+
+	// When pressing 'ENTER' on .ln_url,
+	// consider the user wants to load the LN
+	$('.ln_url').keydown(function(e) {
+		if (e.which == 13) ln_load();
+	});
 });
 
 // When cliking on the button 'LOAD'
