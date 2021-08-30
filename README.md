@@ -39,7 +39,7 @@ If you see a supported website not working, please notify us with the **Issues**
 Same, if you want us to implement a new website. Just say the word.
 
 ## Disclaimer
-You are only allowed to use the content of this project when the light novel you want to download can't be bought in your country.
+You are only allowed to use the content of this project to download a light novel when this action is legal is legal where you stand and if it isn't againts the copyrights of the light novel in question.
 
 ## More importantly
 Enjoy your book ;)
