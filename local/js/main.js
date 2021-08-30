@@ -54,6 +54,9 @@ $(document).ready(function(){
 	// To enable the select
 	// Necessary because of Materialize
 	$('.ln_supported').formSelect();
+
+	// Autofocus to the input ln_url
+	$('.ln_url').focus();
 });
 
 // When cliking on the button 'LOAD'
