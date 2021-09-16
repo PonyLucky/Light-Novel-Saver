@@ -75,7 +75,8 @@ function ln_load() {
 	remove_element('ln_download');
 
 	// Remove requirements not completed
-	let requirements_icon = document.getElementsByClassName('material-icons')[0];
+	let requirements_icon = 
+		document.getElementsByClassName('material-icons')[0];
 	//// Remove the class spin
 	requirements_icon.classList.remove('spin');
 	//// Remove border to the parent div
@@ -190,8 +191,9 @@ function ln_download() {
 	// Format the file
 	ln_data =
 	"<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>"
-		+(ln_title  != "" ? "\n<title>"+ln_title.trim()+"</title>"                  : "")
-		+(ln_author != "" ? "\n<meta name='author' content='"+ln_author+"'>" : "")
+		+(ln_title  != "" ? "\n<title>"+ln_title.trim()+"</title>" : "")
+		+(ln_author != "" ? "\n<meta name='author' content='"
+			+ln_author+"'>" : "")
 		+"\n</head>\n<body>\n"
 		+ln_content
 		+"\n</body>\n</html>";
@@ -270,7 +272,8 @@ function is_website_supported() {
 }
 
 function display_metadata() {
-	document.getElementsByClassName('ln_matadata')[0].classList.remove('d-none');
+	document
+		.getElementsByClassName('ln_matadata')[0].classList.remove('d-none');
 
 	// Set the title if possible
 	if (typeof ln_title == "string") {
