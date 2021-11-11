@@ -19,6 +19,9 @@ HTML, JS and CSS languages are interpreted so you don't need to compile anything
 ### Online
 On this link: https://loving-saha-24c469.netlify.app/.
 
+## Example
+![Presentation Project](local/img/Light-Novel-Saver-example.jpg)
+
 ## Functionalities
 ### Supported languages
 * English
@@ -36,10 +39,10 @@ As you can see, the metadata are imported directly from the website and you can 
 ## Informations
 If you see a supported website not working, please notify us with the **Issues** Pannel, add the **URL** so we can fix it.
 
-Same, if you want us to implement a new website. Just say the word.
+If you want us to implement a new website. Ask in the **Discussions** Pannel.
 
 ## Disclaimer
-You are only allowed to use the content of this project to download a light novel when this action is legal is legal where you stand and if it isn't againts the copyrights of the light novel in question.
+You are only allowed to use the content of this project to download a light novel when the law in your country and the coryrights of the light novel allows it.
 
 ## More importantly
 Enjoy your book ;)
