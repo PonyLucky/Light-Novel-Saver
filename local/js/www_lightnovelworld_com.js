@@ -53,8 +53,7 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			let ln_chapter_title="", ln_chapter_content=new Array();
 
 			// Get the title chapter
-			ln_chapter_title = htmlDoc.querySelector("div.titles")
-				.getElementsByTagName('H2')[0].innerHTML;
+			ln_chapter_title = htmlDoc.getElementsByClassName('chapter-title')[0].innerHTML;
 
 			// Get the content of the chapter
 			let tmp = htmlDoc.getElementById('chapter-container')
