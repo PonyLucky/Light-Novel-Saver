@@ -59,7 +59,20 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			let tmp = htmlDoc.getElementById('chapter-container')
 				.getElementsByTagName('p');
 			for (let i = 0; i < tmp.length; i++) {
-				if (tmp[i].className=="") {
+				if (tmp[i].className=="" && !(
+					tmp[i].innerHTML.includes('Visit lightnov')
+					|| tmp[i].innerHTML.includes('published on lightnov')
+					|| tmp[i].innerHTML.includes('Updated at lightnov')
+					|| tmp[i].innerHTML.includes('Follow new episodes on the lightnov')
+					|| tmp[i].innerHTML.includes('Follow current novel on lightnov')
+					|| tmp[i].innerHTML.includes('chapter is lightnov')
+					|| tmp[i].innerHTML.includes('visit lightnov')
+					|| tmp[i].innerHTML.includes('Visit to lightnov')
+					|| tmp[i].innerHTML.includes('taken from lightnov')
+					|| tmp[i].innerHTML.includes('on the lightnov')
+					|| tmp[i].innerHTML.includes('Try the lightnov')
+					|| tmp[i].innerHTML.includes('</a>')
+				)) {
 					ln_chapter_content.push(tmp[i].outerHTML);
 				}
 			}
