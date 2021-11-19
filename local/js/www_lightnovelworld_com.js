@@ -68,12 +68,9 @@ function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 			for (let i = 0; i < tmp.length; i++) {
 				// If doesn't has class or don't include hyperlink
 				if (tmp[i].className=="" && !tmp[i].innerHTML.includes('</a>')) {
+					// Check for self promotion, if not push the content
 					// If text is italic and bold (in this specific order)
-					if (tmp[i].innerHTML.startsWith('<i><strong>')) {
-						// Check for self promotion, if not push the content
-						if (!tmp[i].innerHTML.includes('lightnov'))
-							ln_chapter_content.push(tmp[i].outerHTML);
-					} else {
+					if (!tmp[i].innerHTML.startsWith('<i><strong>')) {
 						// Push the content
 						ln_chapter_content.push(tmp[i].outerHTML);
 					}
