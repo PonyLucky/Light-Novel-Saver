@@ -1,6 +1,13 @@
+let uri = "";
+
 function ln_type_www_lightnovelworld_com() {
 	// Local variables
 	var ln_link_next_chapter="";
+
+	uri = document.getElementsByClassName('ln_url')[0].value.slice(
+		0,
+		document.getElementsByClassName('ln_url')[0].value.indexOf('/', 8)
+	);
 
 	// Load the summary (for lightnovelworld.com)
 	$.ajax({
@@ -43,7 +50,7 @@ function ln_type_www_lightnovelworld_com() {
 
 function ln_type_www_lightnovelworld_com_chapter(ln_link_next_chapter) {
 	$.ajax({
-		url: "https://www.lightnovelworld.com"+ln_link_next_chapter,
+		url: uri+ln_link_next_chapter,
 		success: function(response) {
 			// Format the response
 			let htmlDoc = html_parser(response);
