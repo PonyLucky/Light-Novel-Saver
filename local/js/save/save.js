@@ -1,19 +1,22 @@
 import {OutputFormat} from "./saveStrategy";
-import {htmlSaveStrategy} from "./htmlSaveStrategy";
-import {markdownSaveStrategy} from "./markdownSaveStrategy";
 import {lightNovel} from "../main";
 
 export const save = Object.freeze({
+    /**
+     * Set outputFormat.
+     * 'html' by default.
+     * @param {number} format
+     * @public
+     */
     setOutputFormat: (format) => {
-        switch (format) {
-            case OutputFormat.html:
-                this.saveStrategy = htmlSaveStrategy;
-                break;
-            case OutputFormat.markdown:
-                this.saveStrategy = markdownSaveStrategy;
-                break;
-        }
+        this.saveStrategy = OutputFormat[format] ?? OutputFormat.html;
     },
+    /**
+     * Download the loaded light novel.
+     * @return {Promise<void>}
+     * @throws {TypeError} No outputFormat.
+     * @public
+     */
     download: async () => {
         this.clear();
 
@@ -51,8 +54,12 @@ export const save = Object.freeze({
             dlTrigger.href = URL.createObjectURL(new Blob([this.buffer.join()], {type: "text/plain"}));
             dlTrigger.click();
         }
-        else throw('Property error: no outputFormat');
+        else throw new TypeError('no outputFormat');
     },
+    /**
+     * Clear the buffer.
+     * @private
+     */
     clear: () => {
         this.buffer = [];
     },

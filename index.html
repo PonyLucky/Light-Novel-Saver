@@ -18,7 +18,7 @@
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<!-- Title -->
 	<title>Light Novel Saver</title>
@@ -54,7 +54,7 @@
 	/>
 </head>
 <body>
-	<main lang="en" class="container">
+	<main class="container">
 		<!-- Headers -->
 		<section class="row center">
 			<div class="col s12 m10 offset-m1">
@@ -122,7 +122,7 @@
 				<div class="center ln-info">
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
-						<select class="ln-supported validate">
+						<select id="ln-supported" class="validate">
 							<option disabled="disabled" selected="selected"
 							>Supported websites</option>
 						</select>
@@ -137,7 +137,8 @@
 					<div class="input-field col s12">
 						<input
 							type="text"
-							class="ln-url validate"
+							id="ln-url"
+							class="validate"
 							placeholder="Insert the URL (root page) of the Light Novel.."
 							title="Insert the URL (root page) of the Light Novel.."
 							required="required"
@@ -148,7 +149,7 @@
 			</div>
 	
 			<div class="input-field col s12">
-				<a class="waves-effect waves-light btn btn-load">
+				<a id="btn-load" class="waves-effect waves-light btn">
 					Load the Light Novel
 				</a>
 			</div>

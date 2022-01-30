@@ -1,14 +1,31 @@
 import {website} from "./website";
+import {lightNovel} from "../../main";
 
+/**
+ * Support of: 'lightnovelstranslations.com'.
+ * @type {Readonly<{parser: function(string): Document, load: function(): never, ajax: function({url: string, success: Function}): void}>}
+ * @public
+ */
 export const lightnovelstranslationsComWebsite = Object.freeze(
     Object.defineProperties(Object.create(website), {
+        /**
+         * Load from the website.
+         * @public
+         */
         load: () => {
-            // TODO: Complete load()
-            console.log('test');
+            this.ajax({
+                url: lightNovel.url.toString(),
+                success: (response) => {
+
+                }
+            });
 
             let nextChapter = '';
 
-            // function to load chapter
+            /**
+             * Load a chapter
+             * @param {string} path
+             */
             let loadChapter =  (path) => {
                 console.log('test: ' + path);
             }

@@ -1,11 +1,14 @@
 import {u} from "../../../vendors/umbrella/umbrella.min";
-import {toast} from "../main";
-import {lightnovelstranslationsComWebsite} from "./website/lightnovelstranslationsComWebsite";
-import {wwwLightnovelworldComWebsite} from "./website/wwwLightnovelworldComWebsite";
-import {wwwNovelpubComWebsite} from "./website/wwwNovelpubComWebsite";
+import {SupportedWebsites} from "./website/website";
 
-// TODO: class to object
+/**
+ * Light novel class.
+ */
 export class LightNovel {
+    /**
+     * Instance of a light novel.
+     * @public
+     */
     constructor () {
         // Use 'Object.create()' to create a chapter
         this.chapter = {
@@ -14,8 +17,15 @@ export class LightNovel {
             content: [],
         };
     }
+
+    /**
+     * Set URL of the light novel (the summary / info page).
+     * @param {string} url Light novel's url.
+     * @throws {TypeError} Invalid URL.
+     * @public
+     */
     setURL (url) {
-        this.url = new URL(url.toString());
+        this.url = new URL(url);
         this.metadata = {
             author: null,
             title: null,
@@ -24,29 +34,46 @@ export class LightNovel {
         // List of chapter
         this.chapters = [];
     }
+
+    /**
+     * Add a chapter.
+     * @param {Object} chapter
+     * @param {boolean} isCheckingDuplicates
+     * @throws {TypeError} Invalid parameters.
+     * @public
+     */
     addChapter (chapter, isCheckingDuplicates = true) {
-        if (Object.getPrototypeOf(chapter) !== this.chapter) {
-            throw('Invalid parameter: not prototype of chapter');
-        }
-        if (chapter.position === null) throw('Invalid property: position is null');
-        if (chapter.title === null) throw('Invalid property: title is null');
-        if (chapter.content.length === 0) throw('Invalid property: content is null');
+        if (Object.getPrototypeOf(chapter) !== this.chapter) throw new TypeError('chapter is invalid');
+        if (chapter.position === null) throw new TypeError('position is null');
+        if (chapter.title === null) throw new TypeError('title is null');
+        if (chapter.content.length === 0) throw new TypeError('content is empty');
 
         // This check can be fairly long with too many chapters
         if (isCheckingDuplicates) if (this.chapters.some(({position}) => position === chapter.position)) {
-            throw('Invalid property: duplicate position');
+            throw new AggregateError('duplicate position');
         }
         this.chapters.push(chapter);
     }
+
+    /**
+     * Sort chapters by their position.
+     * @public
+     */
     sortChapters () {
         this.chapters.sort((a, b) => {
             return a.position - b.position;
         });
     }
+
+    /**
+     * Show and update metadata.
+     * @throws {TypeError} Invalid parameters.
+     * @public
+     */
     showMetadata () {
-        if (this.metadata.author === null) throw('Invalid property: author is null');
-        if (this.metadata.title === null) throw('Invalid property: title is null');
-        if (this.metadata.numberOfChapters === null) throw('Invalid property: numberOfChapters is null');
+        if (this.metadata.author === null) throw new TypeError('author is null');
+        if (this.metadata.title === null) throw new TypeError('title is null');
+        if (this.metadata.numberOfChapters === null) throw new TypeError('numberOfChapters is null');
 
         // Update metadata
         u('#ln-metadata-title').replace(this.metadata.title);
@@ -57,14 +84,20 @@ export class LightNovel {
         // Display metadata
         u('#ln-metadata').removeClass('d-none');
     }
-    showProgress (content = null) {
+
+    /**
+     * Show progression.
+     * @param {string} content Content to display alongside the progressbar.
+     * @public
+     */
+    showProgress (content = '') {
         const progressText = u('#ln-progress-text');
         const progressBar = u('#ln-progress-bar');
 
         // Update
         progressText.replace(
             `<div class="center">${
-                content === null ? `${this.chapters.length} / ${this.metadata.numberOfChapters}` : content
+                content.length === 0 ? `${this.chapters.length} / ${this.metadata.numberOfChapters}` : content
             }</div>`
         );
         progressBar.replace(
@@ -77,19 +110,15 @@ export class LightNovel {
         progressText.removeClass('d-none');
         progressBar.removeClass('d-none');
     }
+
+    /**
+     * Load the light novel.
+     * @public
+     */
     load () {
-        switch (this.url.hostname) {
-            case 'lightnovelstranslations.com':
-                lightnovelstranslationsComWebsite.load();
-                break;
-            case 'www.lightnovelworld.com':
-                wwwLightnovelworldComWebsite.load();
-                break;
-            case 'www.novelpub.com':
-                wwwNovelpubComWebsite.load();
-                break;
-            default:
-                toast('Select a website');
-        }
+        const load = SupportedWebsites[this.url.hostname].load() ?? (() => {
+            M.toast({html: 'Select a website'});
+        })
+        load();
     }
 }
