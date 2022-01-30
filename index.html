@@ -33,7 +33,7 @@
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="local/img/favicon.png"/>
 
-	<!-- jQuery -->
+	<!-- style -->
 	<link
 		rel="stylesheet"
 		type="text/css"
@@ -68,10 +68,10 @@
 		<!-- Infos -->
 		<section class="row">
 			<!-- Requirements column -->
-			<div class="col s12 col-div-3">
-				<div class="center ln_info">
-					<i class="material-icons">settings</i>
-					<p class="ln_info-caption center">Requirements</p>
+			<div id="requirement" class="col s12 col-div-3">
+				<div class="center ln-info">
+					<i id="requirement-icon" class="material-icons">settings</i>
+					<p class="ln-info-caption center">Requirements</p>
 					<p class="light center">
 						Install this
 						<a
@@ -86,9 +86,9 @@
 	
 			<!-- Informations column -->
 			<div class="col s12 col-div-3">
-				<div class="center ln_info">
+				<div class="center ln-info">
 					<i class="material-icons">comment</i>
-					<p class="ln_info-caption center">Informations</p>
+					<p class="ln-info-caption center">Informations</p>
 					<p class="light center">
 						The current version of this 'saver' gives as its output a .HTML 
 						file prepared for importation into any EPUB/PDF converter.
@@ -106,9 +106,9 @@
 	
 			<!-- Help column -->
 			<div class="col s12 col-div-3">
-				<div class="center ln_info">
+				<div class="center ln-info">
 					<i class="material-icons">help</i>
-					<p class="ln_info-caption center">Help</p>
+					<p class="ln-info-caption center">Help</p>
 					<p class="light center">
 						Press <b>F12</b> to know what you're doing.
 					</p>
@@ -119,10 +119,10 @@
 		<section class="row">
 			<!-- List of supported websites -->
 			<div class="col s12 col-div-2">
-				<div class="center ln_info">
+				<div class="center ln-info">
 					<i class="material-icons">language</i>
 					<div class="input-field col s12">
-						<select class="ln_supported validate">
+						<select class="ln-supported validate">
 							<option disabled="disabled" selected="selected"
 							>Supported websites</option>
 						</select>
@@ -132,12 +132,12 @@
 	
 			<!-- Input to insert the URL -->
 			<div class="col s12 col-div-2">
-				<div class="center ln_info">
+				<div class="center ln-info">
 					<i class="material-icons">border_color</i>
 					<div class="input-field col s12">
 						<input
 							type="text"
-							class="ln_url validate"
+							class="ln-url validate"
 							placeholder="Insert the URL (root page) of the Light Novel.."
 							title="Insert the URL (root page) of the Light Novel.."
 							required="required"
@@ -148,12 +148,12 @@
 			</div>
 	
 			<div class="input-field col s12">
-				<a class="waves-effect waves-light btn" onclick="ln_load();">
+				<a class="waves-effect waves-light btn btn-load">
 					Load the Light Novel
 				</a>
 			</div>
-			<div class="ln_matadata col s12 code border-red d-none">
-				<p class="ln_info-caption center">Metadata</p>
+			<div id="ln-metadata" class="col s12 code border-red d-none">
+				<p class="ln-info-caption center">Metadata</p>
 				&lt;<code class="code-tag">head</code>&gt;<br/>
 				&lt;<code class="code-tag">meta</code>
 					<code class="code-attribute">charset</code>='utf-8'
@@ -161,12 +161,11 @@
 				&lt;<code class="code-tag">title</code>&gt;
 				<input
 					type="text"
-					name="title"
-					class="ln_title code-input"
+					id="ln-metadata-title"
+					class="code-input"
 					placeholder="Title..."
 					title="Title..."
 					autocomplete="on"
-					onkeyup="set_size_input('ln_title');"
 				>
 				&lt;/<code class="code-tag">title</code>&gt;<br/>
 				&lt;<code class="code-tag">meta</code>
@@ -174,31 +173,30 @@
 					<code class="code-attribute">content</code>='
 					<input
 						type="text"
-						name="author"
-						class="ln_author code-input"
+						id="ln-metadata-author"
+						class="code-input"
 						placeholder="Author..."
 						title="Author..."
 						autocomplete="on"
-						onkeyup="set_size_input('ln_author');"
 					>
 				'&gt;<br/>
 				&lt;/<code class="code-tag">head</code>&gt;
 			</div>
-			<div class="ln_progress_text light col s12 d-none"></div>
-			<div class="ln_progress_bar input-field col s12 d-none"></div>
-			<div class="ln_download input-field col s12 d-none"></div>
+			<div id="ln-progress-text" class="light col s12 d-none"></div>
+			<div id="ln-progress-bar" class="input-field col s12 d-none"></div>
+			<div id="ln-download" class="input-field col s12 d-none"></div>
 		</section>
 	
-		<!-- CopyRights-friendly section -->
+		<!-- Copyrights-friendly section -->
 		<section class="row">
 			<div class="col s12">
-				<div class="center ln_copyrights">
+				<div id="ln-copyrights"	class="center">
 					<span>C</span>
 					<div class="left col s6 col-div-2">
-						You are only allowed to use the content of this project to download a light novel when this action is legal is legal where you stand and if it isn't againts the copyrights of the light novel in question.
+						You are only allowed to use the content of this project to download a light novel when this action is legal where you stand and if it isn't against the copyrights of the light novel in question.
 					</div>
 					<div class="right col s6 col-div-2">
-						Use of <a href="https://jquery.com/">jQuery</a>,
+						Use of <a href="https://umbrellajs.com/">Umbrella JS</a>,
 						<a href="https://materializecss.com/">Materialize</a>
 						and <a href="https://www.material.io/icons">Material</a>.
 					</div>
@@ -206,169 +204,12 @@
 			</div>
 		</section>
 	</main>
-	<main lang="fr" class="container">
-		<!-- Headers -->
-		<section class="row center">
-			<div class="col s12 m10 offset-m1">
-				<h1 class="header">Light Novel Saver</h1>
-			</div>
-			<div class="col s12 m8 offset-m2">
-				<h4 class="light">Par MARGOT Louis</h4>
-			</div>
-		</section>
-	
-		<!-- Infos -->
-		<section class="row">
-			<!-- Requirements column -->
-			<div class="col s12 col-div-3">
-				<div class="center ln_info">
-					<i class="material-icons">settings</i>
-					<p class="ln_info-caption center">Requis</p>
-					<p class="light center">
-						Veuillez installer cette
-						<a
-							target="_blank"
-							href="https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US"
-						>extension</a>
-						pour pouvoir accéder au contenu d'autres pages internet.
-						(<i>Et pensez à l'<b>activer</b></i>)
-					</p>
-				</div>
-			</div>
-	
-			<!-- Informations column -->
-			<div class="col s12 col-div-3">
-				<div class="center ln_info">
-					<i class="material-icons">comment</i>
-					<p class="ln_info-caption center">Informations</p>
-					<p class="light center">
-						Cette version vous donnera un fichier .HTML dont l'architecture est préparée pour importation dans n'importe lequel convertisseur EPUB/PDF.
-					</p>
-					<p class="light center">
-						Par exemple
-						<a
-							target="_blank"
-							href="https://www.onlineconverter.com/html-to-epub"
-						>celui-ci</a>.
-						<i>(En prime il ajoute correctement les métadonnées: <b>titre</b> [title] ; <b>auteur</b>[author])</i>
-					</p>
-				</div>
-			</div>
-	
-			<!-- Help column -->
-			<div class="col s12 col-div-3">
-				<div class="center ln_info">
-					<i class="material-icons">help</i>
-					<p class="ln_info-caption center">Aide</p>
-					<p class="light center">
-						Appuyez sur <b>F12</b> pour avoir plus d'informations.
-					</p>
-				</div>
-			</div>
-		</section>
-	
-		<section class="row">
-			<!-- List of supported websites -->
-			<div class="col s12 col-div-2">
-				<div class="center ln_info">
-					<i class="material-icons">language</i>
-					<div class="input-field col s12">
-						<select class="ln_supported validate">
-							<option disabled="disabled" selected="selected"
-							>Sites supportés</option>
-						</select>
-					</div>
-				</div>
-			</div>
-	
-			<!-- Input to insert the URL -->
-			<div class="col s12 col-div-2">
-				<div class="center ln_info">
-					<i class="material-icons">border_color</i>
-					<div class="input-field col s12">
-						<input
-							type="text"
-							class="ln_url validate"
-							placeholder="Insérez l'URL (du sommaire) du roman..."
-							title="Insérez l'URL (du sommaire) du roman..."
-							required="required"
-							autocomplete="off"
-						>
-					</div>
-				</div>
-			</div>
-	
-			<div class="input-field col s12">
-				<a class="waves-effect waves-light btn" onclick="ln_load();">
-					Charger le roman
-				</a>
-			</div>
-			<div class="ln_matadata col s12 code border-red d-none">
-				<p class="ln_info-caption center">Métadonnées</p>
-				&lt;<code class="code-tag">head</code>&gt;<br/>
-				&lt;<code class="code-tag">meta</code>
-					<code class="code-attribute">charset</code>='utf-8'
-				&gt;<br/>
-				&lt;<code class="code-tag">title</code>&gt;
-				<input
-					type="text"
-					name="title"
-					class="ln_title code-input"
-					placeholder="Titre..."
-					title="Titre..."
-					autocomplete="on"
-					onkeyup="set_size_input('ln_title');"
-				>
-				&lt;/<code class="code-tag">title</code>&gt;<br/>
-				&lt;<code class="code-tag">meta</code>
-					<code class="code-attribute">name</code>='author'
-					<code class="code-attribute">content</code>='
-					<input
-						type="text"
-						name="author"
-						class="ln_author code-input"
-						placeholder="Auteur..."
-						title="Auteur..."
-						autocomplete="on"
-						onkeyup="set_size_input('ln_author');"
-					>
-				'&gt;<br/>
-				&lt;/<code class="code-tag">head</code>&gt;
-			</div>
-			<div class="ln_progress_text light col s12 d-none"></div>
-			<div class="ln_progress_bar input-field col s12 d-none"></div>
-			<div class="ln_download input-field col s12 d-none"></div>
-		</section>
-	
-		<!-- CopyRights-friendly section -->
-		<section class="row">
-			<div class="col s12">
-				<div class="center ln_copyrights">
-					<span>C</span>
-					<div class="left col s6 col-div-2">
-						Vous êtes autorisés à utiliser ce site pour télécharger des romans quand l'action est légale dans votre zone géographique et que cela n'est pas contre les copyrights du roman en question.
-					</div>
-					<div class="right col s6 col-div-2">
-						Utilisation de <a href="https://jquery.com/">jQuery</a>,
-						<a href="https://materializecss.com/">Materialize</a>
-						et <a href="https://www.material.io/icons">Material</a>.
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<!-- Dummy div for sizing the text -->
-	<div class="d-none"><span id="dummy_span"></span></div>
 
 	<!-- Scripts -->
 	<!---- vendors -->
-	<script src="vendors/jquery/jquery.min.js"></script>
+	<script src="vendors/umbrella/umbrella.min.js"></script>
 	<script src="vendors/materialize/js/materialize.min.js"></script>
 	<!---- local -->
-	<script src="local/js/lang.js"></script>
 	<script src="local/js/main.js"></script>
-	<script src="local/js/www_lightnovelstranslations_com.js"></script>
-	<script src="local/js/www_lightnovelworld_com.js"></script>
 </body>
 </html>
