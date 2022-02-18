@@ -1,5 +1,5 @@
-import {website} from "./website";
-import {lightNovel} from "../../main";
+import {website} from "./website.js";
+import {lightNovel} from "../../main.js";
 
 /**
  * Support of: 'lightnovelstranslations.com'.
@@ -12,7 +12,7 @@ export const lightnovelstranslationsComWebsite = Object.freeze(
          * Load from the website.
          * @public
          */
-        load: () => {
+        load () {
             this.ajax({
                 url: lightNovel.url.toString(),
                 success: (response) => {

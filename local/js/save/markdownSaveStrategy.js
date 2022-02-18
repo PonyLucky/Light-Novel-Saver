@@ -1,4 +1,4 @@
-import {saveStrategy} from "./saveStrategy";
+import {saveStrategy} from "./saveStrategy.js";
 
 /**
  * Strategy for MarkDown
@@ -11,7 +11,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startAuthor: (buffer) => {
+        startAuthor (buffer) {
             buffer.push('By ');
         },
 
@@ -20,7 +20,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endAuthor: (buffer) => {
+        endAuthor (buffer) {
             buffer.push('\n');
         },
 
@@ -29,7 +29,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startTitle: (buffer) => {
+        startTitle (buffer) {
             buffer.push('# ');
         },
 
@@ -38,7 +38,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endTitle: (buffer) => {
+        endTitle (buffer) {
             buffer.push('\n');
         },
 
@@ -47,7 +47,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startChapters:(buffer) => {
+        startChapters(buffer) {
             buffer.push('\n');
         },
 
@@ -56,7 +56,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapters: (buffer) => {
+        endChapters (buffer) {
             buffer.push('---');
         },
 
@@ -65,7 +65,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startChapterTitle: (buffer) => {
+        startChapterTitle (buffer) {
             buffer.push('## ');
         },
 
@@ -74,7 +74,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapterTitle: (buffer) => {
+        endChapterTitle (buffer) {
             buffer.push('\n');
         },
 
@@ -83,7 +83,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapterParagraph: (buffer) => {
+        endChapterParagraph (buffer) {
             buffer.push('\n');
         },
 
@@ -92,7 +92,7 @@ export const markdownSaveStrategy = Object.freeze(
          * @return {string}
          * @public
          */
-        fileExtension: () => {
+        fileExtension () {
             return '.md';
         },
     })

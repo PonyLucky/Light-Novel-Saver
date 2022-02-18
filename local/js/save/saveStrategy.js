@@ -1,15 +1,3 @@
-import {htmlSaveStrategy} from "./htmlSaveStrategy";
-import {markdownSaveStrategy} from "./markdownSaveStrategy";
-
-/**
- * Supported output format.
- * @public
- */
-export const OutputFormat = Object.freeze({
-    html: htmlSaveStrategy,
-    markdown: markdownSaveStrategy,
-});
-
 /**
  * Abstract strategy for save file.
  * @constructor
@@ -22,103 +10,103 @@ export const saveStrategy = {
      * @param {Array} buffer
      * @public
      */
-    start: (buffer) => {},
+    start (buffer) {},
 
     /**
      * Strategy to end the file.
      * @param {Array} buffer
      * @public
      */
-    end: (buffer) => {},
+    end (buffer) {},
 
     /**
      * Strategy to start the metadata.
      * @param {Array} buffer
      * @public
      */
-    startMetadata: (buffer) => {},
+    startMetadata (buffer) {},
 
     /**
      * Strategy to end the metadata.
      * @param {Array} buffer
      * @public
      */
-    endMetadata: (buffer) => {},
+    endMetadata (buffer) {},
 
     /**
      * Strategy to start the author.
      * @param {Array} buffer
      * @public
      */
-    startAuthor: (buffer) => {},
+    startAuthor (buffer) {},
 
     /**
      * Strategy to end the author.
      * @param {Array} buffer
      * @public
      */
-    endAuthor: (buffer) => {},
+    endAuthor (buffer) {},
 
     /**
      * Strategy to start the title.
      * @param {Array} buffer
      * @public
      */
-    startTitle: (buffer) => {},
+    startTitle (buffer) {},
 
     /**
      * Strategy to end the title.
      * @param {Array} buffer
      * @public
      */
-    endTitle: (buffer) => {},
+    endTitle (buffer) {},
 
     /**
      * Strategy to start the chapters.
      * @param {Array} buffer
      * @public
      */
-    startChapters: (buffer) => {},
+    startChapters (buffer) {},
 
     /**
      * Strategy to end the chapters.
      * @param {Array} buffer
      * @public
      */
-    endChapters: (buffer) => {},
+    endChapters (buffer) {},
 
     /**
      * Strategy to start the title of a chapter.
      * @param {Array} buffer
      * @public
      */
-    startChapterTitle: (buffer) => {},
+    startChapterTitle (buffer) {},
 
     /**
      * Strategy to end the title of a chapter.
      * @param {Array} buffer
      * @public
      */
-    endChapterTitle: (buffer) => {},
+    endChapterTitle (buffer) {},
 
     /**
      * Strategy to start a paragraph.
      * @param {Array} buffer
      * @public
      */
-    startChapterParagraph: (buffer) => {},
+    startChapterParagraph (buffer) {},
 
     /**
      * Strategy to end a paragraph.
      * @param {Array} buffer
      * @public
      */
-    endChapterParagraph: (buffer) => {},
+    endChapterParagraph (buffer) {},
 
     /**
      * Extension of the file (with the dot '.').
      * @return {string}
      * @public
      */
-    fileExtension: () => { return ''; },
+    fileExtension () { return ''; },
 }

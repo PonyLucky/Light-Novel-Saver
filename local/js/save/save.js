@@ -1,5 +1,5 @@
-import {OutputFormat} from "./saveStrategy";
-import {lightNovel} from "../main";
+import {OutputFormat} from "./outputFormat.js";
+import {lightNovel} from "../main.js";
 
 export const save = Object.freeze({
     /**
@@ -8,7 +8,7 @@ export const save = Object.freeze({
      * @param {number} format
      * @public
      */
-    setOutputFormat: (format) => {
+    setOutputFormat (format) {
         this.saveStrategy = OutputFormat[format] ?? OutputFormat.html;
     },
     /**
@@ -17,7 +17,7 @@ export const save = Object.freeze({
      * @throws {TypeError} No outputFormat.
      * @public
      */
-    download: async () => {
+     async download () {
         this.clear();
 
         if (this.hasOwnProperty('saveStrategy')) {
@@ -60,7 +60,7 @@ export const save = Object.freeze({
      * Clear the buffer.
      * @private
      */
-    clear: () => {
+    clear () {
         this.buffer = [];
     },
 });

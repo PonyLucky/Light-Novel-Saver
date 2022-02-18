@@ -1,20 +1,5 @@
-import {u} from "../../../../vendors/umbrella/umbrella.min";
-import {lightnovelstranslationsComWebsite} from "./lightnovelstranslationsComWebsite";
-import {wwwLightnovelworldComWebsite} from "./wwwLightnovelworldComWebsite";
-import {wwwNovelpubComWebsite} from "./wwwNovelpubComWebsite";
-
 // TODO: Use of WebSocket to fasten the download
 // https://javascript.info/websocket
-
-/**
- * Supported websites.
- * @public
- */
-export const SupportedWebsites = Object.freeze({
-    "lightnovelstranslations.com": lightnovelstranslationsComWebsite,
-    "www.lightnovelworld.com": wwwLightnovelworldComWebsite,
-    "www.novelpub.com": wwwNovelpubComWebsite,
-});
 
 /**
  * Abstract website.
@@ -28,7 +13,7 @@ export const website = {
      * @returns {Document}
      * @private
      */
-    parser: (content) => {
+    parser (content) {
         return (new DOMParser()).parseFromString(content,"text/html");
     },
 
@@ -38,7 +23,7 @@ export const website = {
      * @param {function} success
      * @protected
      */
-    ajax: ({url, success}) => {
+    ajax ({url, success}) {
         // Check parameters
         if (url === undefined) throw('url must be declared');
         if (success === undefined) throw('success must be declared');
@@ -70,7 +55,7 @@ export const website = {
      * Load from the website.
      * @public
      */
-    load: () => {
+    load () {
         throw ('Website not supported');
     },
 };

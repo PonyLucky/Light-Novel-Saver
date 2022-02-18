@@ -1,5 +1,4 @@
-import {u} from "../../../vendors/umbrella/umbrella.min";
-import {SupportedWebsites} from "./website/website";
+import {SupportedWebsites} from "./website/supportedWebsites.js";
 
 /**
  * Light novel class.

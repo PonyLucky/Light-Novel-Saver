@@ -1,14 +1,13 @@
-import {u} from "../../vendors/umbrella/umbrella.min";
-import {LightNovel} from "./lightNovel/lightNovel";
-import {save} from "./save/save";
-import {SupportedWebsites} from "./lightNovel/website/website";
+import {LightNovel} from "./lightNovel/lightNovel.js";
+import {SupportedWebsites} from "./lightNovel/website/supportedWebsites.js";
+import {save} from "./save/save.js";
 
 // Global variables
 export const lightNovel = new LightNovel();
 
 // TODO: Remove everything not useful anymore
 
-u(document).ready(() => {
+u(document).on('DOMContentLoaded', () => {
 	// Fill #ln-supported
 	u('#ln-supported').append(
 		ws => `<option>${ws}</option>`,
@@ -22,7 +21,7 @@ u(document).ready(() => {
 	let urlInput = u('#ln-url');
 
 	// Autofocus to the input .ln_url
-	urlInput.focus();
+	//urlInput.focus();
 
 	// When pressing 'ENTER' on .ln_url,
 	// consider the user wants to load the LN

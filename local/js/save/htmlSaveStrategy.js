@@ -1,4 +1,4 @@
-import {saveStrategy} from "./saveStrategy";
+import {saveStrategy} from "./saveStrategy.js";
 
 /**
  * Strategy for HTML.
@@ -11,7 +11,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        start: (buffer) => {
+        start (buffer) {
             buffer.push('<!DOCTYPE html><html>');
         },
 
@@ -20,7 +20,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        end: (buffer) => {
+        end (buffer) {
             buffer.push('</html>');
         },
 
@@ -29,7 +29,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startMetadata: (buffer) => {
+        startMetadata (buffer) {
             buffer.push("<head><meta charset='utf-8'>");
         },
 
@@ -38,7 +38,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endMetadata: (buffer) => {
+        endMetadata (buffer) {
             buffer.push('</head>');
         },
 
@@ -47,7 +47,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startAuthor: (buffer) => {
+        startAuthor (buffer) {
             buffer.push("<meta name='author' content='");
         },
 
@@ -56,7 +56,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endAuthor: (buffer) => {
+        endAuthor (buffer) {
             buffer.push("'>");
         },
 
@@ -65,7 +65,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startTitle: (buffer) => {
+        startTitle (buffer) {
             buffer.push('<title>');
         },
 
@@ -74,7 +74,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endTitle: (buffer) => {
+        endTitle (buffer) {
             buffer.push('</title>');
         },
 
@@ -83,7 +83,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startChapters: (buffer) => {
+        startChapters (buffer) {
             buffer.push('<body>');
         },
 
@@ -92,7 +92,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapters: (buffer) => {
+        endChapters (buffer) {
             buffer.push('</body>');
         },
 
@@ -101,7 +101,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startChapterTitle: (buffer) => {
+        startChapterTitle (buffer) {
             buffer.push('<h1>');
         },
 
@@ -110,7 +110,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapterTitle: (buffer) => {
+        endChapterTitle (buffer) {
             buffer.push('</h1>');
         },
 
@@ -119,7 +119,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        startChapterParagraph: (buffer) => {
+        startChapterParagraph (buffer) {
             buffer.push('<p>');
         },
 
@@ -128,7 +128,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @param {Array} buffer
          * @public
          */
-        endChapterParagraph: (buffer) => {
+        endChapterParagraph (buffer) {
             buffer.push('</p>');
         },
 
@@ -137,7 +137,7 @@ export const htmlSaveStrategy = Object.freeze(
          * @return {string}
          * @public
          */
-        fileExtension: () => {
+        fileExtension () {
             return '.html';
         },
     })
